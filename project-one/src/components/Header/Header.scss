@@ -1,0 +1,39 @@
+.header {
+  height: $header-height;
+  background-color: $grullo;
+  padding: 15px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  & .main-logo {
+    cursor: pointer;
+    :hover {
+      stroke-width: 3px;
+    }
+  }
+
+  & .hamburger-menu {
+    cursor: pointer;
+  }
+
+  & .navigation {
+    display: none;
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+    column-gap: 12px;
+  }
+
+  @include responsive("desktop") {
+    .hamburger-menu {
+      display: none;
+    }
+
+    .navigation {
+      display: flex;
+    }
+  }
+}

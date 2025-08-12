@@ -1,0 +1,22 @@
+.menu_item {
+  display: flex;
+  align-items: center;
+  color: $garnet;
+  max-width: $menu-text-width;
+  font-weight: 600;
+  cursor: pointer;
+
+  padding: $padding-base * 2;
+  font-size: $text-title;
+
+  &--disabled {
+    font-style: italic;
+    color: $cold-ash;
+    cursor: default;
+  }
+
+  &:hover {
+    color: $timber-wolf;
+    background-color: $garnet;
+  }
+}
