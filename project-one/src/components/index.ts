@@ -1,4 +1,4 @@
 export { default as AppLayout } from "./AppLayout";
 export * as Common from "./common";
-export { default as Header } from "./Header";
-export { default as Navigation } from "./Navigation";
+export { default as Header } from "./Header/Header";
+export { default as Navigation } from "./Navigation/Navigation";

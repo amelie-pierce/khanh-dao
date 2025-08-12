@@ -1,5 +1,5 @@
 import type { IMenu } from "@/types";
-import ClickAwayListener from "../ClickAwayListener";
+import ClickAwayListener from "../ClickawayListener/ClickawayListener";
 import "./Menu.scss";
 import MenuItem from "./MenuItem";
 

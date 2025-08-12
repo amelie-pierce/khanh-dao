@@ -7,7 +7,7 @@ import {
 } from "@/assets/icons";
 import { useState } from "react";
 import { Common } from "..";
-import Navigation from "../Navigation";
+import Navigation from "../Navigation/Navigation";
 import "./Header.scss";
 
 const Header = (props: TOwnProps) => {
