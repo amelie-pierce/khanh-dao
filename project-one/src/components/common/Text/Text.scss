@@ -51,19 +51,35 @@ h1 {
   text-overflow: ellipsis;
 
   &--title {
-    font-size: $text-base + ($text-modifier * 3);
+    font-size: $text-base + $text-modifier;
     font-weight: 600;
+
+    @include responsive("desktop") {
+      font-size: $text-base + ($text-modifier * 3);
+    }
   }
 
   &--lg {
-    font-size: $text-base + $text-modifier;
+    font-size: $text-base;
+
+    @include responsive("desktop") {
+      font-size: $text-base + $text-modifier;
+    }
   }
 
   &--md {
-    font-size: $text-base;
+    font-size: $text-base - $text-modifier;
+
+    @include responsive("desktop") {
+      font-size: $text-base;
+    }
   }
 
   &--sm {
-    font-size: $text-base - $text-modifier;
+    font-size: $text-base - ($text-modifier * 2);
+
+    @include responsive("desktop") {
+      font-size: $text-base - $text-modifier;
+    }
   }
 }

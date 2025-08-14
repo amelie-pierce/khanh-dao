@@ -4,6 +4,7 @@ export { default as ClickAwayListener } from "./ClickawayListener/ClickawayListe
 export { default as LinkItem } from "./LinkItem/LinkItem";
 export { default as Menu } from "./Menu/Menu";
 export { default as Modal } from "./Modal/Modal";
+export { default as ProductCard } from "./ProductCard/ProductCard";
 export { default as SelectField } from "./SelectField/SelectField";
 export { default as Text } from "./Text/Text";
 export { default as TextField } from "./TextField/TextField";

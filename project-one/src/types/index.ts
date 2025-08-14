@@ -25,6 +25,8 @@ export interface Text {
   variant?: TextVariant;
   className?: string;
   onClick?: () => void;
+  fontWeight?: number;
+  color?: string;
 }
 
 export interface SelectField {

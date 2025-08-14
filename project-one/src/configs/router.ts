@@ -4,6 +4,7 @@ import {
   LandingPage,
   ListingPage,
   LoginPage,
+  NotAllowPage,
   OrderSummaryPage,
   ProductDetailsPage,
 } from "@/pages";
@@ -15,6 +16,7 @@ export enum ERoute {
   LISTING = "listing",
   CHECKOUT = "checkout",
   DEMO = "demo",
+  NOT_ALLOW = "not-allow",
 }
 
 export const NAVIGATIONS = [
@@ -38,7 +40,8 @@ const router = createBrowserRouter([
     Component: AppLayout,
     children: [
       // PUBLIC ROUTES
-      { path: "login", Component: LoginPage },
+      { path: "/login", Component: LoginPage },
+      { path: `/${ERoute.NOT_ALLOW}`, Component: NotAllowPage },
       // PROTECTED ROUTES
       { path: `/${ERoute.HOME}`, Component: LandingPage },
       { path: `/${ERoute.LISTING}`, Component: ListingPage },

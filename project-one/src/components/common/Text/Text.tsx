@@ -3,7 +3,14 @@ import { combineClassNames } from "@/utils/common";
 import "./Text.scss";
 
 const Text = (props: TextProps) => {
-  const { children, className, size = "text-md", variant } = props;
+  const {
+    children,
+    className,
+    size = "text-md",
+    variant,
+    fontWeight = 400,
+    color = "$raisin-black",
+  } = props;
 
   const sizeMapper = {
     title: "--title",
@@ -36,6 +43,9 @@ const Text = (props: TextProps) => {
 
   return (
     <div
+      style={{
+        fontWeight,
+      }}
       className={`${className || ""} ${combineClassNames(
         "text",
         sizeMapper[size]

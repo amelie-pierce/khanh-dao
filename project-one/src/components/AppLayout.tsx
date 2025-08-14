@@ -1,14 +1,15 @@
+import { ERoute } from "@/configs/router";
 import useToast from "@/hooks/useToast";
 import { Navigate, Outlet } from "react-router";
+import { Button, ProductCard, Toast } from "./common";
 import Header from "./Header/Header";
-import { Button, Toast } from "./common";
 
 const AppLayout = () => {
   const isLoggedIn = true;
   const { showToast } = useToast();
 
   if (!isLoggedIn) {
-    return <Navigate to="/login" replace />;
+    return <Navigate to={"/" + ERoute.LOGIN} replace />;
   }
 
   return (
@@ -22,6 +23,7 @@ const AppLayout = () => {
         >
           Trigger Toast
         </Button>
+        <ProductCard name="NICKERS" price={12412412} />
         <Toast />
       </div>
 
