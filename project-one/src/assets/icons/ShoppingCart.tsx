@@ -1,18 +1,13 @@
-import type { TIcon } from "@/types";
+import type { Icon } from "@/types";
 
-const ShoppingCart = (props: TIcon & { hasItem?: boolean }) => {
-  const {
-    width = 50,
-    height = 40,
-    color = "currentColor",
-    hasItem = false,
-  } = props;
+const ShoppingCart = (props: Icon & { hasItem?: boolean }) => {
+  const { size = 40, color, hasItem = false } = props;
   return (
     <svg
-      width={width + (hasItem ? 5 : 0)}
-      height={height}
+      width={size + (hasItem ? 5 : 0)}
+      height={size}
       viewBox="0 0 40 40"
-      fill="none"
+      fill={color}
       xmlns="http://www.w3.org/2000/svg"
     >
       <path

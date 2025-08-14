@@ -21,8 +21,24 @@ html {
 body {
   margin: 0 auto;
   text-align: center;
+  box-sizing: border-box;
+}
+
+.main__body {
+  padding: $padding-base * 10;
 }
 
 svg {
-  color: $garnet;
+  stroke: $garnet;
+  fill: $garnet;
+}
+
+.disabled {
+  color: $grullo !important;
+  pointer-events: none !important;
+
+  svg {
+    stroke: $grullo !important;
+    fill: $grullo !important;
+  }
 }

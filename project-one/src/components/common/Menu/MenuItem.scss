@@ -1,9 +1,9 @@
-.menu_item {
+.menu-item {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   color: $garnet;
   max-width: $menu-text-width;
-  font-weight: 600;
   cursor: pointer;
 
   padding: $padding-base * 2;
@@ -11,12 +11,18 @@
 
   &--disabled {
     font-style: italic;
-    color: $cold-ash;
+    color: $timber-wolf;
+    pointer-events: none;
     cursor: default;
   }
 
   &:hover {
     color: $timber-wolf;
     background-color: $garnet;
+
+    svg {
+      stroke: $timber-wolf;
+      fill: $timber-wolf;
+    }
   }
 }

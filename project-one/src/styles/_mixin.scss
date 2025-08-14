@@ -17,3 +17,7 @@ $breakpoints: (
     @content;
   }
 }
+
+@mixin castShadow {
+  box-shadow: 0px 5px 5px 2px rgba(0, 0, 0, 0.5);
+}

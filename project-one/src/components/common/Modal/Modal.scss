@@ -1,0 +1,34 @@
+.modal-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 300px;
+  height: 150px;
+  background-color: $timber-wolf;
+  border-radius: 16px;
+  padding: $padding-base * 4;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+
+  @include castShadow();
+}
+
+.modal {
+  &__footer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    margin-top: $padding-base * 2;
+
+    .button {
+      margin-right: $padding-base;
+    }
+
+    .button:last-child {
+      margin-right: 0;
+    }
+  }
+}

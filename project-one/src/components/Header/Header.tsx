@@ -14,6 +14,10 @@ const Header = (props: TOwnProps) => {
   const {} = props;
   const [isShowMenu, toggleMenu] = useState<boolean>(false);
 
+  const onNavigate = (value: string) => {
+    console.log("navigating to", value);
+  };
+
   return (
     <>
       <div className="header">
@@ -27,7 +31,7 @@ const Header = (props: TOwnProps) => {
           <HamburgerMenu />
         </div>
         <span className="main-logo">
-          <Chocolate width={40} height={40} />
+          <Chocolate size={32} />
         </span>
         <Navigation />
         <div className="header__right">
@@ -38,15 +42,14 @@ const Header = (props: TOwnProps) => {
 
       <Common.Menu
         open={isShowMenu}
-        options={[
-          { text: "First Item", handler: () => {} },
-          { text: "Second Item", handler: () => {} },
-          { text: "Third Item", handler: () => {} },
-        ]}
+        options={["First Item", "Second Item", "Third Item"]}
         onClose={() => {
           toggleMenu(false);
         }}
-      ></Common.Menu>
+        onSelectValue={(value) => {
+          onNavigate(value);
+        }}
+      />
     </>
   );
 };

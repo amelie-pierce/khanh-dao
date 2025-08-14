@@ -1,6 +1,6 @@
 import type { Icon } from "@/types";
 
-const ArrowDown = (props: Icon) => {
+const Checked = (props: Icon) => {
   const { size = 40, color } = props;
   return (
     <svg
@@ -11,11 +11,10 @@ const ArrowDown = (props: Icon) => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        d="M12.35 13.825L20 21.4583L27.65 13.825L30 16.175L20 26.175L10 16.175L12.35 13.825Z"
+        d="M14.6582 26.4583L7.70822 19.5083L5.34155 21.8583L14.6582 31.175L34.6582 11.175L32.3082 8.82495L14.6582 26.4583Z"
         fill={color}
       />
     </svg>
   );
 };
-
-export default ArrowDown;
+export default Checked;

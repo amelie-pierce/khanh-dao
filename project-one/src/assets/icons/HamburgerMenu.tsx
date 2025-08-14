@@ -1,14 +1,14 @@
-import type { TIcon } from "@/types";
+import type { Icon } from "@/types";
 
-const HamburgerMenu = (props: TIcon) => {
-  const { width = 40, height = 40, color = "currentColor" } = props;
+const HamburgerMenu = (props: Icon) => {
+  const { size = 40, color } = props;
 
   return (
     <svg
-      width={width}
-      height={height}
+      width={size}
+      height={size}
       viewBox="0 0 40 40"
-      fill="none"
+      fill={color}
       xmlns="http://www.w3.org/2000/svg"
     >
       <path

@@ -1,0 +1,40 @@
+.toast {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  bottom: 20px;
+  right: 20px;
+  padding: 16px 8px;
+  border-radius: 4px;
+
+  & svg {
+    margin-right: 12px;
+  }
+
+  &--info {
+    background-color: $timber-wolf;
+    color: $olive;
+
+    & svg {
+      stroke: $olive;
+      fill: $olive;
+    }
+  }
+
+  &--error {
+    background-color: $error;
+    color: $garnet;
+  }
+
+  &--success {
+    background-color: $success;
+    color: $olive;
+
+    & svg {
+      stroke: $olive;
+      fill: $olive;
+    }
+  }
+
+  @include castShadow();
+}
