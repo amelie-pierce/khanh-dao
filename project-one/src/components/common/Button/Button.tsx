@@ -8,6 +8,8 @@ type TOwnProps = ComponentProps<"div"> & {
   children: ReactNode;
   variant?: ButtonVariant;
   disabled?: boolean;
+  width?: number;
+  height?: number;
 };
 
 const Button = (props: TOwnProps) => {
@@ -16,6 +18,8 @@ const Button = (props: TOwnProps) => {
     variant = "primary",
     onClick,
     disabled = false,
+    width,
+    height,
     ...rest
   } = props;
 
@@ -32,6 +36,7 @@ const Button = (props: TOwnProps) => {
         variantMapper[variant],
         disabled ? "--disabled" : undefined
       )}
+      style={{ width: width || "fit-content", height: height || "auto" }}
       onClick={onClick}
     >
       {typeof children === "string" ? (

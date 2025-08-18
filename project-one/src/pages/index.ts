@@ -1,5 +1,5 @@
 // Public Pages
-export { default as LoginPage } from "./LoginPage";
+export { default as LoginPage } from "./LoginPage/LoginPage";
 export { default as NotAllowPage } from "./NotAllowPage/NotAllowPage";
 
 // Private Pages

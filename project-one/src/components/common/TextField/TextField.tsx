@@ -1,20 +1,27 @@
 import { combineClassNames } from "@/utils/common";
+import { forwardRef, type InputHTMLAttributes } from "react";
 import Text from "../Text/Text";
 import "./TextField.scss";
 
-type TOwnProps = {
+type TOwnProps = InputHTMLAttributes<HTMLInputElement> & {
   startIcon?: React.ReactNode;
   disabled?: boolean;
   errorText?: string;
 };
-const TextField = (props: TOwnProps) => {
-  const { startIcon, disabled = false, errorText = "" } = props;
+const TextField = forwardRef<HTMLInputElement, TOwnProps>((props, ref) => {
+  const {
+    startIcon,
+    disabled = false,
+    placeholder = "",
+    errorText = "",
+    ...rest
+  } = props;
 
   const disabledClass = disabled ? "--disabled" : "";
   const errorClass = errorText ? "--error" : "";
 
   return (
-    <div className="text-field__container">
+    <div className="container">
       <div
         className={combineClassNames(
           "text-field__wrapper",
@@ -24,8 +31,10 @@ const TextField = (props: TOwnProps) => {
       >
         {startIcon ? startIcon : null}
         <input
+          ref={ref}
+          placeholder={placeholder}
+          {...rest}
           disabled={disabled}
-          placeholder="text"
           className={combineClassNames(
             "text-field",
             startIcon ? "--with-icon" : "",
@@ -41,6 +50,6 @@ const TextField = (props: TOwnProps) => {
       )}
     </div>
   );
-};
+});
 
 export default TextField;

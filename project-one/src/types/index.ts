@@ -62,7 +62,7 @@ export interface Toast {
   message: string;
   type: ToastType;
   duration?: number; // in milliseconds
-  showToast?: (message: string, type: ToastType, duration: number) => void;
+  showToast: (message: string, type: ToastType, duration?: number) => void;
 }
 
 export interface FlexBox {
@@ -74,4 +74,14 @@ export interface Drawer {
   onClose: () => void;
   onTriggerDrawer?: () => void;
   children?: ReactNode;
+}
+
+export type UserInfo = {
+  name: string;
+  email: string;
+};
+
+export interface User {
+  info?: UserInfo;
+  setInfo: (arg: UserInfo) => void;
 }

@@ -1,32 +1,38 @@
-import { ERoute } from "@/configs/router";
-import useDrawer from "@/hooks/useDrawer";
-import { combineClassNames } from "@/utils/common";
-import { Navigate, Outlet } from "react-router";
-import { Toast } from "./common";
-import Header from "./Header/Header";
+import useAuth from "@/hooks/useAuth";
+import useLocalStorage from "@/hooks/useLocalStorage";
+import { useEffect } from "react";
+import { Outlet, useNavigate } from "react-router";
+import ProtectedLayout from "./ProtectedLayout";
+import PublicLayout from "./PublicLayout";
 
 const AppLayout = () => {
-  const isLoggedIn = true;
-  const { open } = useDrawer();
+  const { setInfo } = useAuth();
+  const { getAcessInfo } = useLocalStorage();
+  const navigate = useNavigate();
+  const accessInfo = getAcessInfo();
 
-  if (!isLoggedIn) {
-    return <Navigate to={"/" + ERoute.LOGIN} replace />;
-  }
+  useEffect(() => {
+    const accessInfo = getAcessInfo();
+    if (accessInfo) {
+      setInfo(accessInfo);
+      return;
+    }
+
+    navigate("/login");
+  }, []);
 
   return (
-    <div>
-      <Header />
-      <div
-        className={combineClassNames(
-          "main__body",
-          open ? "--drawer-opened" : ""
-        )}
-      >
-        <Toast />
-      </div>
-
-      <Outlet />
-    </div>
+    <>
+      {accessInfo ? (
+        <ProtectedLayout>
+          <Outlet />
+        </ProtectedLayout>
+      ) : (
+        <PublicLayout>
+          <Outlet />
+        </PublicLayout>
+      )}
+    </>
   );
 };
 
