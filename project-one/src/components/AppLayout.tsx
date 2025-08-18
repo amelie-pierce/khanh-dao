@@ -1,12 +1,13 @@
 import { ERoute } from "@/configs/router";
-import useToast from "@/hooks/useToast";
+import useDrawer from "@/hooks/useDrawer";
+import { combineClassNames } from "@/utils/common";
 import { Navigate, Outlet } from "react-router";
-import { Button, ProductCard, Toast } from "./common";
+import { Toast } from "./common";
 import Header from "./Header/Header";
 
 const AppLayout = () => {
   const isLoggedIn = true;
-  const { showToast } = useToast();
+  const { open } = useDrawer();
 
   if (!isLoggedIn) {
     return <Navigate to={"/" + ERoute.LOGIN} replace />;
@@ -15,15 +16,12 @@ const AppLayout = () => {
   return (
     <div>
       <Header />
-      <div className="main__body">
-        <Button
-          onClick={() => {
-            showToast && showToast("This is a error message", "info", 2000);
-          }}
-        >
-          Trigger Toast
-        </Button>
-        <ProductCard name="NICKERS" price={12412412} />
+      <div
+        className={combineClassNames(
+          "main__body",
+          open ? "--drawer-opened" : ""
+        )}
+      >
         <Toast />
       </div>
 

@@ -1,0 +1,24 @@
+.drawer-wrapper {
+  bottom: 0;
+  right: 0;
+}
+
+.drawer {
+  display: flex;
+  position: relative;
+  width: $drawer-width;
+  height: $drawer-height;
+
+  transform: translateX(500%);
+  transition: transform 0.5s ease-out;
+
+  &--open {
+    transform: translateX(10%);
+  }
+
+  @include responsive("desktop") {
+    display: none;
+  }
+
+  @include castShadow();
+}

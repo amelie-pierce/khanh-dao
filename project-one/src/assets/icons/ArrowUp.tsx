@@ -1,9 +1,10 @@
 import type { Icon } from "@/types";
 
 const ArrowUp = (props: Icon) => {
-  const { size, color } = props;
+  const { size, color, classes } = props;
   return (
     <svg
+      className={classes}
       width={size}
       height={size}
       viewBox="0 0 40 40"

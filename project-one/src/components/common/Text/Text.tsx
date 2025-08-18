@@ -9,7 +9,6 @@ const Text = (props: TextProps) => {
     size = "text-md",
     variant,
     fontWeight = 400,
-    color = "$raisin-black",
   } = props;
 
   const sizeMapper = {

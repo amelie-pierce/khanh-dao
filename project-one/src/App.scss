@@ -25,12 +25,20 @@ body {
 }
 
 .main__body {
-  padding: $padding-base * 10;
+  padding: $padding-base * 6;
+
+  &--drawer-opened {
+    filter: blur(1px);
+  }
+
+  @include responsive("desktop") {
+    padding: $padding-base * 10;
+    filter: none;
+  }
 }
 
 svg {
   stroke: $garnet;
-  fill: $garnet;
 }
 
 .disabled {

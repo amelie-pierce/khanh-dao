@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 
 export type Icon = {
+  classes?: string;
   color?: string;
   size?: number;
 };
@@ -62,4 +63,15 @@ export interface Toast {
   type: ToastType;
   duration?: number; // in milliseconds
   showToast?: (message: string, type: ToastType, duration: number) => void;
+}
+
+export interface FlexBox {
+  children?: ReactNode;
+}
+
+export interface Drawer {
+  open: boolean;
+  onClose: () => void;
+  onTriggerDrawer?: () => void;
+  children?: ReactNode;
 }

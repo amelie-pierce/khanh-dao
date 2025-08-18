@@ -1,0 +1,9 @@
+.icon-button {
+  & svg {
+    cursor: pointer;
+
+    &:hover {
+      filter: brightness(1.3);
+    }
+  }
+}
