@@ -1,5 +1,8 @@
 .icon-button {
+  display: flex;
+  align-items: center;
   & svg {
+    stroke: $garnet;
     cursor: pointer;
 
     &:hover {

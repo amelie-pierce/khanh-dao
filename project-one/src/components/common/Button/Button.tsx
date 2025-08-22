@@ -31,11 +31,13 @@ const Button = (props: TOwnProps) => {
   return (
     <div
       {...rest}
-      className={combineClassNames(
-        "button",
-        variantMapper[variant],
-        disabled ? "--disabled" : undefined
-      )}
+      className={
+        combineClassNames(
+          "button",
+          variantMapper[variant],
+          disabled ? "--disabled" : undefined
+        ) + ` ${props.className || ""} `
+      }
       style={{ width: width || "fit-content", height: height || "auto" }}
       onClick={onClick}
     >

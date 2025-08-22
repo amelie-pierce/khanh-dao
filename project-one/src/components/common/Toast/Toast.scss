@@ -6,6 +6,7 @@
   right: 20px;
   padding: 16px 8px;
   border-radius: 4px;
+  @include castShadow();
 
   & svg {
     margin-right: 12px;
@@ -35,6 +36,4 @@
       fill: $olive;
     }
   }
-
-  @include castShadow();
 }

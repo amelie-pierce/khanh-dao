@@ -4,7 +4,7 @@ import {
   LandingPage,
   ListingPage,
   LoginPage,
-  NotAllowPage,
+  NotFoundPage,
   OrderSummaryPage,
   ProductDetailsPage,
 } from "@/pages";
@@ -41,13 +41,14 @@ const router = createBrowserRouter([
     children: [
       // PUBLIC ROUTES
       { path: "/login", Component: LoginPage },
-      { path: `/${ERoute.NOT_ALLOW}`, Component: NotAllowPage },
+
       // PROTECTED ROUTES
       { path: `/${ERoute.HOME}`, Component: LandingPage },
       { path: `/${ERoute.LISTING}`, Component: ListingPage },
       { path: `/${ERoute.LISTING}/:id`, Component: ProductDetailsPage },
       { path: `/${ERoute.CHECKOUT}`, Component: OrderSummaryPage },
       { path: `/${ERoute.DEMO}`, Component: DemoPage },
+      { path: "*", Component: NotFoundPage },
     ],
   },
 ]);

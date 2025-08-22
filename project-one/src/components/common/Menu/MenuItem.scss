@@ -9,6 +9,16 @@
   padding: $padding-base * 2;
   font-size: $text-title;
 
+  &--selected {
+    color: $timber-wolf;
+    background-color: $garnet;
+
+    svg {
+      stroke: $timber-wolf;
+      fill: $timber-wolf;
+    }
+  }
+
   &--disabled {
     font-style: italic;
     color: $timber-wolf;

@@ -1,0 +1,44 @@
+.listing-page {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.listing {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+
+  @include responsive("desktop") {
+    padding: 0 $padding-base * 8;
+    row-gap: $padding-base * 8;
+  }
+
+  &__search__box {
+    display: flex;
+    align-items: center;
+    column-gap: 16px;
+  }
+
+  &__container {
+    display: flex;
+    flex-flow: row wrap;
+    row-gap: 16px;
+    column-gap: 16px;
+    margin-top: 36px;
+
+    @include responsive("desktop") {
+      column-gap: 64px;
+      row-gap: 64px;
+    }
+  }
+
+  & .pagination {
+    align-self: center;
+    @include responsive("desktop") {
+      align-self: end;
+    }
+  }
+}

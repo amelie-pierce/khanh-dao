@@ -1,11 +1,11 @@
 import type { Icon } from "@/types";
 
 const SearchIcon = (props: Icon) => {
-  const { width = 40, height = 40, color = "currentColor" } = props;
+  const { size, color = "currentColor" } = props;
   return (
     <svg
-      width={width}
-      height={height}
+      width={size}
+      height={size}
       viewBox="0 0 40 40"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

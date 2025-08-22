@@ -21,3 +21,9 @@ export const currencyConverter = (price: number) => {
     currency: "USD",
   }).format(price);
 };
+
+export const getOrinalRoute = (fullPath: string) => {
+  const pathArr = fullPath.split("/");
+  if (!pathArr.length) return "/";
+  return pathArr[1];
+};

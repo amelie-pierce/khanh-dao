@@ -17,23 +17,36 @@ h3 {
 }
 
 h4 {
-  font-size: 45px;
-  line-height: 45px;
+  font-size: 35px;
+  line-height: 35px;
   margin: 0;
+
+  @include responsive("desktop") {
+    font-size: 45px;
+    line-height: 45px;
+  }
 }
 
 h5 {
-  font-size: 40px;
-  line-height: 40px;
+  font-size: 30px;
+  line-height: 30px;
   margin: 0;
+
+  @include responsive("desktop") {
+    font-size: 40px;
+    line-height: 40px;
+  }
 }
 
 .text {
   width: inherit;
   display: inline-block;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+
+  & .truncated {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 
   &--title {
     font-size: $text-base + $text-modifier;

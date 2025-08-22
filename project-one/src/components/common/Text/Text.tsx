@@ -9,6 +9,7 @@ const Text = (props: TextProps) => {
     size = "text-md",
     variant,
     fontWeight = 400,
+    align,
   } = props;
 
   const sizeMapper = {
@@ -37,6 +38,10 @@ const Text = (props: TextProps) => {
       return <h5>{children}</h5>;
     }
 
+    if (variant === "p") {
+      return <p>{children}</p>;
+    }
+
     return children;
   };
 
@@ -44,6 +49,7 @@ const Text = (props: TextProps) => {
     <div
       style={{
         fontWeight,
+        textAlign: align || "inherit",
       }}
       className={`${className || ""} ${combineClassNames(
         "text",

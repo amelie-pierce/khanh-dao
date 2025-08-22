@@ -6,7 +6,7 @@ input[type="range"] {
   -webkit-appearance: none;
   appearance: none;
   position: absolute;
-  width: 250px;
+  width: 200px;
   border-radius: 16px;
 
   // background: none;
@@ -47,13 +47,13 @@ input[type="range"]::-webkit-slider-thumb {
   position: relative;
   display: flex;
   align-items: center;
-  padding: 2px 12px;
+  padding: 2px 4px;
   margin-top: 24px;
   border: 1px solid $garnet;
   border-radius: 16px;
   color: $garnet;
 
   &--max {
-    margin-left: -38px;
+    margin-left: -25px;
   }
 }

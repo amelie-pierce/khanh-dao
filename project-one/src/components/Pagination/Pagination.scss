@@ -1,0 +1,31 @@
+.pagination {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  color: $garnet;
+  font-weight: bold;
+
+  &__paging {
+    display: flex;
+    margin-bottom: 5px;
+  }
+
+  &__page {
+    display: flex;
+    height: 32px;
+    width: 32px;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    &--selected {
+      text-decoration: underline;
+    }
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

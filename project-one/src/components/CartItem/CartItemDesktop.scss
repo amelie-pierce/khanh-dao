@@ -5,6 +5,10 @@
   width: 600px;
   user-select: none;
 
+  & svg {
+    fill: none;
+  }
+
   &__section {
     display: flex;
     justify-content: start;

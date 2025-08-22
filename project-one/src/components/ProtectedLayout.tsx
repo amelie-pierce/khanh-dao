@@ -2,7 +2,7 @@ import useDrawer from "@/hooks/useDrawer";
 import { combineClassNames } from "@/utils/common";
 import type { ReactNode } from "react";
 import Header from "./Header/Header";
-import { Toast } from "./common";
+import { Modal, Toast } from "./common";
 
 type TOwnProps = {
   children?: ReactNode;
@@ -13,7 +13,7 @@ const ProtectedLayout = (props: TOwnProps) => {
   const { open } = useDrawer();
 
   return (
-    <div>
+    <>
       <Header />
       <div
         className={combineClassNames(
@@ -21,10 +21,12 @@ const ProtectedLayout = (props: TOwnProps) => {
           open ? "--drawer-opened" : ""
         )}
       >
+        <div>Breadscrum ne</div>
         {children}
         <Toast />
+        <Modal />
       </div>
-    </div>
+    </>
   );
 };
 

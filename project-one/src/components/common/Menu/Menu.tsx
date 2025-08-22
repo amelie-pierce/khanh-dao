@@ -18,7 +18,7 @@ const Menu = (props: MenuProps) => {
     return null;
   }
 
-  const onSelect = (value: string) => {
+  const onSelect = (value: string | number) => {
     onSelectValue(value);
     onClose();
   };
@@ -28,11 +28,11 @@ const Menu = (props: MenuProps) => {
       <div className="menu">
         {options.map((o) => (
           <MenuItem
-            onClick={() => onSelect(o)}
+            onClick={() => onSelect(o.value)}
             disabled={disabledValues?.includes(o) || false}
-            selected={selectedValue === o}
+            selected={selectedValue === o.value}
           >
-            <Text size="title">{o}</Text>
+            <Text size="title">{o.label}</Text>
           </MenuItem>
         ))}
       </div>

@@ -1,17 +1,27 @@
+import { RANGE_GAP } from "@/constants";
+import type { RangeParams } from "@/types";
 import { currencyConverter } from "@/utils/common";
-import { useState } from "react";
 import Text from "../Text/Text";
 import "./Slider.scss";
 
-type TOwnProps = {};
+type TOwnProps = {
+  ranges: RangeParams;
+  onUpdateRange: (arg: RangeParams) => void;
+};
 
 const Slider = (props: TOwnProps) => {
-  const {} = props;
+  const { ranges, onUpdateRange } = props;
 
-  const [ranges, setRanges] = useState<{ min: number; max: number }>({
-    min: 0,
-    max: 20,
-  });
+  const validateMinMax = (
+    isMin: boolean,
+    value: number,
+    ranges: RangeParams
+  ) => {
+    if (isMin) {
+      return value < ranges.max - RANGE_GAP ? value : ranges.max - RANGE_GAP;
+    }
+    return value > ranges.min + RANGE_GAP ? value : ranges.min + RANGE_GAP;
+  };
 
   const onChangeRange = ({
     value,
@@ -20,8 +30,10 @@ const Slider = (props: TOwnProps) => {
     value: number;
     isMin: boolean;
   }) => {
-    setRanges((prev) => ({ ...prev, [isMin ? "min" : "max"]: value }));
-    console.log("checking e", value, isMin);
+    onUpdateRange({
+      ...ranges,
+      [isMin ? "min" : "max"]: validateMinMax(isMin, value, ranges),
+    });
   };
 
   return (
@@ -49,14 +61,14 @@ const Slider = (props: TOwnProps) => {
           onChangeRange({ value: Number(e.target.value), isMin: false })
         }
       />
-      <div className="slider-track" style={{ left: ranges.min * 2.2 + "px" }}>
+      <div className="slider-track" style={{ left: ranges.min * 1.7 + "px" }}>
         <Text size="text-md" fontWeight={600}>
           {currencyConverter(ranges.min)}
         </Text>
       </div>
       <div
         className="slider-track slider-track--max"
-        style={{ left: ranges.max * 2.2 + "px" }}
+        style={{ left: ranges.max * 1.6 + "px" }}
       >
         <Text size="text-md" fontWeight={600}>
           {currencyConverter(ranges.max)}

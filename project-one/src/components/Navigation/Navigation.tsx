@@ -10,7 +10,7 @@ const Navigation = (props: TOwnProps) => {
   return (
     <div className="navigation">
       {NAVIGATIONS.map((nav, index) => (
-        <div className="navigation__item">
+        <div className="navigation__item" key={index}>
           <LinkItem key={nav.to} to={nav.to} label={nav.label} />
           {index !== NAVIGATIONS.length - 1 && (
             <span className="separator">|</span>

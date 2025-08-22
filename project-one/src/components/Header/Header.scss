@@ -6,17 +6,6 @@
   align-items: center;
   justify-content: space-between;
 
-  & .main-logo {
-    svg {
-      fill: $garnet;
-      stroke: $garnet;
-      cursor: pointer;
-      :hover {
-        stroke-width: 3px;
-      }
-    }
-  }
-
   & .hamburger-menu {
     cursor: pointer;
   }

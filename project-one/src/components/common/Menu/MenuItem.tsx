@@ -6,21 +6,30 @@ type TOwnProps = {
   children?: React.ReactNode;
   disabled?: boolean;
   selected?: boolean;
+  hasIcon?: boolean;
   onClick?: () => void;
 };
 
 const MenuItem = (props: TOwnProps) => {
-  const { children, onClick, disabled = false, selected = false } = props;
+  const {
+    children,
+    onClick,
+    disabled = false,
+    selected = false,
+    hasIcon = false,
+  } = props;
 
   const disabledClass = disabled ? "--disabled" : "";
+  const selectedClass = selected ? "--selected" : "";
+  const shouldHaveIcon = selected && hasIcon;
 
   return (
     <div
-      className={combineClassNames("menu-item", disabledClass)}
+      className={combineClassNames("menu-item", disabledClass, selectedClass)}
       onClick={onClick}
     >
       {children}
-      {selected && <Checked size={24} />}
+      {shouldHaveIcon && <Checked size={24} />}
     </div>
   );
 };

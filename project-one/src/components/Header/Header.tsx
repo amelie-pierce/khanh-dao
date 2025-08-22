@@ -5,17 +5,24 @@ import {
   HamburgerMenu,
   ShoppingCart,
 } from "@/assets/icons";
+import { ERoute, NAVIGATIONS } from "@/configs/router";
+import { useCart } from "@/hooks";
+import { getOrinalRoute } from "@/utils/common";
 import { useState } from "react";
-import { Common } from "..";
+import { useLocation, useNavigate } from "react-router";
+import { IconButton, Menu } from "../common";
 import Navigation from "../Navigation/Navigation";
 import "./Header.scss";
 
 const Header = (props: TOwnProps) => {
   const {} = props;
   const [isShowMenu, toggleMenu] = useState<boolean>(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { items } = useCart();
 
   const onNavigate = (value: string) => {
-    console.log("navigating to", value);
+    navigate("/" + value);
   };
 
   return (
@@ -30,24 +37,25 @@ const Header = (props: TOwnProps) => {
         >
           <HamburgerMenu />
         </div>
-        <span className="main-logo">
+        <IconButton onClick={() => navigate("/" + ERoute.HOME)}>
           <Chocolate size={32} />
-        </span>
+        </IconButton>
         <Navigation />
         <div className="header__right">
-          <ShoppingCart />
-          <AvatarBadge />
+          <ShoppingCart hasItem={Object.keys(items).length > 0} size={32} />
+          <AvatarBadge size={32} />
         </div>
       </div>
 
-      <Common.Menu
+      <Menu
         open={isShowMenu}
-        options={["First Item", "Second Item", "Third Item"]}
+        options={NAVIGATIONS.map((nav) => ({ ...nav, value: nav.to }))}
+        selectedValue={getOrinalRoute(location.pathname)}
         onClose={() => {
           toggleMenu(false);
         }}
         onSelectValue={(value) => {
-          onNavigate(value);
+          onNavigate(value.toString());
         }}
       />
     </>

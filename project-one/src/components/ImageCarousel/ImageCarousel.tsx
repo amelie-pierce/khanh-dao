@@ -5,16 +5,12 @@ import { combineClassNames } from "@/utils/common";
 import { nanoid } from "nanoid";
 import "./ImageCarousel.scss";
 
-const TEMP = [
-  { src: "images/ferrero.png", selected: true },
-  { src: "images/ferrero_2.png", selected: false },
-  { src: "images/ferrero.png", selected: false },
-  { src: "images/ferrero_2.png", selected: false },
-  { src: "images/ferrero.png", selected: false },
-  { src: "images/ferrero_2.png", selected: false },
-];
+type TOwnProps = {
+  images: string[];
+};
 
-const ImageCarousel = () => {
+const ImageCarousel = (props: TOwnProps) => {
+  const { images } = props;
   const [imageList, setImageList] = useState<
     {
       id: string;
@@ -56,8 +52,9 @@ const ImageCarousel = () => {
   };
 
   useEffect(() => {
-    const newImageList = TEMP.map((img) => ({
-      ...img,
+    const newImageList = images.map((img, index) => ({
+      src: img,
+      selected: !index ? true : false,
       id: nanoid(),
     }));
 

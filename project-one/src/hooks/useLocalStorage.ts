@@ -1,5 +1,5 @@
 import { LOCAL_STORAGE_KEYS } from "@/constants";
-import type { UserInfo } from "@/types";
+import type { ItemCart, UserInfo } from "@/types";
 
 const useLocalStorage = () => {
   const getAcessInfo = () => {
@@ -14,7 +14,19 @@ const useLocalStorage = () => {
     localStorage.setItem(LOCAL_STORAGE_KEYS.ACCESS_INFO, JSON.stringify(arg));
   };
 
-  return { setAccessInfo, getAcessInfo };
+  const setCartItem = (arg: Record<string, ItemCart>) => {
+    localStorage.setItem(LOCAL_STORAGE_KEYS.CART_ITEMS, JSON.stringify(arg));
+  };
+
+  const getCartItems = () => {
+    const items = localStorage.getItem(LOCAL_STORAGE_KEYS.CART_ITEMS);
+    if (items) {
+      return JSON.parse(items) as Record<string, ItemCart>;
+    }
+    return {};
+  };
+
+  return { setAccessInfo, getAcessInfo, setCartItem, getCartItems };
 };
 
 export default useLocalStorage;

@@ -1,29 +1,35 @@
-import type { Modal as ModalProps } from "@/types";
+import { useModal } from "@/hooks";
 import Button from "../Button/Button";
 import ClickAwayListener from "../ClickawayListener/ClickawayListener";
 import Text from "../Text/Text";
 import "./Modal.scss";
 
-const Modal = (props: ModalProps) => {
-  const { open } = props;
+const Modal = () => {
+  const { open, onClose, content, onCancel, onConfirm, title, children } =
+    useModal();
 
   if (!open) {
     return null;
   }
 
   return (
-    <ClickAwayListener onClickAway={props.onClose}>
+    <ClickAwayListener onClickAway={onClose}>
       <div className="modal-wrapper">
         <div className="modal">
           <div className="modal__header">
-            <Text size="title">{props.title}</Text>
+            <Text size="title" fontWeight={600}>
+              {title || "Are you sure ?"}
+            </Text>
           </div>
-          <div className="modal__body">{props.children}</div>
+          <div className="modal__body">
+            {content}
+            {children}
+          </div>
           <div className="modal__footer">
-            <Button variant="secondary">
+            <Button variant="secondary" onClick={onCancel}>
               <Text size="text-lg">Cancel</Text>
             </Button>
-            <Button>
+            <Button onClick={onConfirm}>
               <Text size="text-lg">OK</Text>
             </Button>
           </div>
