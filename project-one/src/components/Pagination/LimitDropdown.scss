@@ -8,15 +8,15 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border: 1px solid $garnet;
+  border: 2px solid $garnet;
   border-radius: 8px;
-  top: -20px;
+  top: -14px;
 
   &__item {
     & .text {
       cursor: pointer;
       border-radius: 8px;
-      padding: 8px;
+      padding: 4px 8px;
 
       &:hover {
         text-decoration: underline;

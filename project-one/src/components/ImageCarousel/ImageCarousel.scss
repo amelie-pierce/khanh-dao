@@ -60,7 +60,7 @@
     overflow-x: auto;
 
     @include responsive("desktop") {
-      width: 200px;
+      width: 100px;
       flex-flow: column;
       overflow-y: auto;
       align-items: center;
@@ -74,7 +74,6 @@
     flex-basis: 30%;
     height: 80px;
     cursor: pointer;
-    background-color: $cold-ash;
 
     & img {
       width: 100%;
@@ -89,7 +88,7 @@
 
   @include responsive("desktop") {
     display: flex;
-    justify-content: start;
+    justify-content: center;
     align-items: center;
     flex-direction: column;
     width: 100px;

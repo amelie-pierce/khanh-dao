@@ -3,8 +3,8 @@ import { create } from "zustand";
 
 const useDrawer = create<Drawer>((set, get) => ({
   open: false,
-  onTriggerDrawer: () => {
-    set({ open: true });
+  onTriggerDrawer: ({ component }) => {
+    set({ open: true, component });
   },
   onClose: () => set({ open: false }),
 }));

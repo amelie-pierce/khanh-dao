@@ -37,7 +37,7 @@ const Pagination = () => {
       <IconButton
         className={disabledLogics.canPrevious}
         onClick={() => {
-          onUpdateParams({ page: page - 1 });
+          onUpdateParams({ ...searchParams, page: page - 1 });
         }}
       >
         <Previous size={28} />
@@ -46,7 +46,7 @@ const Pagination = () => {
       <IconButton
         className={disabledLogics.canNext}
         onClick={() => {
-          onUpdateParams({ page: page + 1 });
+          onUpdateParams({ ...searchParams, page: page + 1 });
         }}
       >
         <Next size={28} />

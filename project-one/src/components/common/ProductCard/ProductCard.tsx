@@ -18,7 +18,7 @@ const ProductCard = (props: TOwnProps) => {
       <img src={imageSrc} alt={`${name}-image`} />
 
       <div className="product-card__desc">
-        <Text size="text-lg" fontWeight={600}>
+        <Text className="truncated" size="text-lg" fontWeight={600}>
           {name}
         </Text>
         <br />

@@ -8,12 +8,19 @@
   row-gap: 32px;
 
   &__flavor {
+    &__select {
+      margin-left: 12px;
+    }
   }
 
   &__pricing {
     display: flex;
     flex-direction: column;
     row-gap: 16px;
+
+    & .slider {
+      margin-left: 12px;
+    }
   }
 
   &__cta {

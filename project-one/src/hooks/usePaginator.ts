@@ -14,7 +14,7 @@ const usePaginator = () => {
   const limit = Number(parsedSearchParms.limit) || 5;
   const flavor = parsedSearchParms.flavor;
   const min = Number(parsedSearchParms.min) || 0;
-  const max = Number(parsedSearchParms.max) || 20;
+  const max = Number(parsedSearchParms.max) || 100;
   const total = Number(parsedSearchParms.total) || PRODUCTS.length;
   const maxPage = Math.ceil(total / limit);
 

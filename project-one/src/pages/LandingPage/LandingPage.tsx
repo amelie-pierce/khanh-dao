@@ -22,7 +22,7 @@ const LandingPage = () => {
           Software Engineer
         </Text>
         <div className="card__image">
-          <img src="images/ferrero.png" />
+          <img src="images/profile.png" />
         </div>
         <p>
           I am a JavaScript developer with 5 years of experience specializing in

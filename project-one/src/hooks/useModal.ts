@@ -1,28 +1,28 @@
 import type { Modal } from "@/types";
 import { create } from "zustand";
 
-const useModal = (confirmCb?: () => void) => {
-  const modalStore = create<Modal>((set, get) => ({
-    open: false,
-    title: "",
-    content: "",
-    onTriggerModal: (title: string, content?: string) => {
-      set({ open: true, title, content });
-    },
-    onClose: () => set({ open: false }),
-    onConfirm: () => {
-      debugger;
-      confirmCb && confirmCb();
-      set({ open: false });
-    },
-    onCancel: () => {
-      set({ open: false });
-    },
-  }));
-
-  return {
-    ...modalStore.getState(),
-  };
-};
+const useModal = create<Modal>((set, get) => ({
+  open: false,
+  title: "",
+  content: "",
+  confirmCallback: undefined,
+  onTriggerModal: (
+    title: string,
+    content?: string,
+    confirmCallback?: () => void
+  ) => {
+    set({ open: true, title, content, confirmCallback });
+  },
+  onClose: () => set({ open: false }),
+  onConfirm: () => {
+    set((state) => {
+      state.confirmCallback && state.confirmCallback();
+      return { open: false };
+    });
+  },
+  onCancel: () => {
+    set({ open: false });
+  },
+}));
 
 export default useModal;

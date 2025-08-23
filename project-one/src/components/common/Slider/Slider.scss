@@ -32,15 +32,15 @@ input[type="range"]::-webkit-slider-thumb {
   position: relative;
   box-shadow: none;
   border: none;
-  height: 28px;
-  width: 28px;
+  height: 20px;
+  width: 20px;
   background: url("/images/slider-thumb.png");
   background-size: contain;
   border-radius: 16px;
 
   cursor: pointer;
   -webkit-appearance: none;
-  margin-top: -10px;
+  margin-top: -7px;
 }
 
 .slider-track {
@@ -56,4 +56,13 @@ input[type="range"]::-webkit-slider-thumb {
   &--max {
     margin-left: -25px;
   }
+}
+
+.slider__label {
+  color: $garnet;
+  display: flex;
+  column-gap: 12px;
+  align-items: center;
+  margin-top: 18px;
+  margin-left: 12px;
 }

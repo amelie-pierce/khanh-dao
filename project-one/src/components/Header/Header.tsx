@@ -35,14 +35,20 @@ const Header = (props: TOwnProps) => {
             toggleMenu((prev) => !prev);
           }}
         >
-          <HamburgerMenu />
+          <HamburgerMenu size={32} />
         </div>
         <IconButton onClick={() => navigate("/" + ERoute.HOME)}>
           <Chocolate size={32} />
         </IconButton>
         <Navigation />
         <div className="header__right">
-          <ShoppingCart hasItem={Object.keys(items).length > 0} size={32} />
+          <IconButton
+            onClick={() => {
+              navigate("/" + ERoute.CHECKOUT);
+            }}
+          >
+            <ShoppingCart hasItem={Object.keys(items).length > 0} size={32} />
+          </IconButton>
           <AvatarBadge size={32} />
         </div>
       </div>

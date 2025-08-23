@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 
 import { combineClassNames } from "@/utils/common";
 import { nanoid } from "nanoid";
+import { IconButton } from "../common";
 import "./ImageCarousel.scss";
 
 type TOwnProps = {
@@ -81,17 +82,17 @@ const ImageCarousel = (props: TOwnProps) => {
   return (
     <div className="carousel-wrapper">
       <div className="image-swiper">
-        <div onClick={() => onNavigateImage(true)}>
+        <IconButton onClick={() => onNavigateImage(true)}>
           <ArrowUp size={32} />
-        </div>
+        </IconButton>
         <div className={"image-swiper__container"}>{renderImageList()}</div>
-        <div
+        <IconButton
           onClick={() => {
             onNavigateImage(false);
           }}
         >
           <ArrowDown size={32} />
-        </div>
+        </IconButton>
       </div>
       <div className="carousel-image">
         <img src={selectedImage?.src} />

@@ -11,21 +11,21 @@ export const LOCAL_STORAGE_KEYS = {
   CART_ITEMS: "cartItems",
 };
 
-export const RANGE_GAP = 20;
+export const RANGE_GAP = 10;
 
 export const DEFAULT_SEARCH_PARAMS = {
   page: 1,
   limit: 5,
   flavor: "milk",
   min: 0,
-  max: 20,
+  max: 100,
 } as CustomSearchParams;
 
 export const DEFAULT_FILTER = {
   flavor: [],
   ranges: {
     min: 0,
-    max: 20,
+    max: 100,
   },
 } as FilterParams;
 

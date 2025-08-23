@@ -1,5 +1,5 @@
 import { Delete } from "@/assets/icons";
-import { useCart } from "@/hooks";
+import { useCart, useModal, useToast } from "@/hooks";
 import type { ItemCart } from "@/types";
 import { currencyConverter } from "@/utils/common";
 import { IconButton, Text } from "../common";
@@ -9,9 +9,24 @@ import "./CartItemMobile.scss";
 const CartItemMobile = (item: ItemCart) => {
   const { id, name, price, images, quantity } = item;
   const { removeItem, onUpdateQuantity } = useCart();
+  const { onTriggerModal } = useModal();
+  const { showToast } = useToast();
 
   const handleUpdateQuantity = (isAdd: boolean) => {
     onUpdateQuantity(id, isAdd);
+  };
+
+  const handleRemoveItem = () => {
+    onTriggerModal &&
+      onTriggerModal(
+        "Are you sure",
+        `${name} will be removed from your cart`,
+        () => {
+          removeItem(id);
+
+          showToast("Item has been removed", "info");
+        }
+      );
   };
 
   return (
@@ -37,7 +52,12 @@ const CartItemMobile = (item: ItemCart) => {
             quantity={quantity}
             onChangeQuantity={handleUpdateQuantity}
           />
-          <IconButton onClick={() => removeItem(id)}>
+          <IconButton
+            onClick={(e) => {
+              e.stopPropagation();
+              handleRemoveItem();
+            }}
+          >
             <Delete size={24} />
           </IconButton>
         </div>

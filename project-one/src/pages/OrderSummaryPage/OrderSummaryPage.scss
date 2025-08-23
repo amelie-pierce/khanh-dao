@@ -31,7 +31,6 @@
     margin: 16px 0px;
 
     @include responsive("desktop") {
-      text-align: center;
       margin-top: 50px;
       margin-bottom: 30px;
       font-size: 40px;

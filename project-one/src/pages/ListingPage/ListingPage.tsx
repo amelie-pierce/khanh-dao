@@ -1,7 +1,7 @@
 import { FilterIcon, SearchIcon } from "@/assets/icons";
 import { Filter, Pagination } from "@/components";
 import { IconButton, ProductCard, Text, TextField } from "@/components/common";
-import { useScreenSize } from "@/hooks";
+import { useDrawer, useScreenSize } from "@/hooks";
 import useListing from "@/hooks/useListing";
 import "./ListingPage.scss";
 
@@ -11,6 +11,7 @@ const ListingPage = (props: TOwnProps) => {
   const {} = props;
   const { products, loading } = useListing();
   const { isMobile } = useScreenSize();
+  const { onTriggerDrawer } = useDrawer();
 
   const renderListing = () => {
     if (loading) {
@@ -25,8 +26,6 @@ const ListingPage = (props: TOwnProps) => {
     ));
   };
 
-  console.log("checking ", isMobile);
-
   return (
     <div className="listing-page">
       {!isMobile && <Filter />}
@@ -37,14 +36,19 @@ const ListingPage = (props: TOwnProps) => {
             startIcon={<SearchIcon size={24} />}
             placeholder="Type here to search"
           />
-          {isMobile ? (
-            <>
-              <IconButton>
-                <FilterIcon size={24} />
-                <Text size="text-lg">Filter</Text>
-              </IconButton>
-            </>
-          ) : null}
+          {isMobile && (
+            <IconButton
+              onClick={(e) => {
+                e.stopPropagation();
+                onTriggerDrawer && onTriggerDrawer({ component: <Filter /> });
+              }}
+            >
+              <FilterIcon size={24} />
+              <Text size="text-lg" fontWeight={600}>
+                Filter
+              </Text>
+            </IconButton>
+          )}
         </div>
         <div className="listing__container">{renderListing()}</div>
 

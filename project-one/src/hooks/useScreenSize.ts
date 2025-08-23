@@ -4,8 +4,7 @@ const useScreenSize = () => {
   const [isMobile, setIsMobile] = useState<boolean>(false);
 
   const handleResize = () => {
-    console.log("on resizing");
-    if (window.innerWidth <= 430) {
+    if (window.innerWidth <= 520) {
       setIsMobile(true);
     } else {
       setIsMobile(false);

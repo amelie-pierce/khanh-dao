@@ -61,7 +61,11 @@ const Slider = (props: TOwnProps) => {
           onChangeRange({ value: Number(e.target.value), isMin: false })
         }
       />
-      <div className="slider-track" style={{ left: ranges.min * 1.7 + "px" }}>
+      <div className="slider__label">
+        <Text>{currencyConverter(ranges.min)}</Text>-
+        <Text>{currencyConverter(ranges.max)}</Text>
+      </div>
+      {/* <div className="slider-track" style={{ left: ranges.min * 1.7 + "px" }}>
         <Text size="text-md" fontWeight={600}>
           {currencyConverter(ranges.min)}
         </Text>
@@ -73,7 +77,7 @@ const Slider = (props: TOwnProps) => {
         <Text size="text-md" fontWeight={600}>
           {currencyConverter(ranges.max)}
         </Text>
-      </div>
+      </div> */}
     </div>
   );
 };

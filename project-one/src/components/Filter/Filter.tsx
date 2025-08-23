@@ -3,6 +3,7 @@ import {
   DEFAULT_SEARCH_PARAMS,
   FLAVOR_CHECKBOXES,
 } from "@/constants";
+import { useDrawer } from "@/hooks";
 import usePaginator from "@/hooks/usePaginator";
 import type { ChocolateFlavor, FilterParams, RangeParams } from "@/types";
 import { useState } from "react";
@@ -10,6 +11,7 @@ import { Button, Checkbox, Slider, Text } from "../common";
 import "./Filter.scss";
 
 const Filter = () => {
+  const { onClose } = useDrawer();
   const { searchParams, onUpdateParams } = usePaginator();
   const { flavor, max, min } = searchParams;
   const [filter, setFilter] = useState<FilterParams>({
@@ -41,11 +43,13 @@ const Filter = () => {
       min: filter.ranges.min,
       max: filter.ranges.max,
     });
+    onClose();
   };
 
   const onResetFilter = () => {
     setFilter(DEFAULT_FILTER);
     onUpdateParams(DEFAULT_SEARCH_PARAMS);
+    onClose();
   };
 
   return (
@@ -54,15 +58,17 @@ const Filter = () => {
         <Text size="title" fontWeight={600}>
           Flavor
         </Text>
-        {FLAVOR_CHECKBOXES.map((fl) => (
-          <Checkbox
-            key={fl.value}
-            checked={filter.flavor.includes(fl.value)}
-            onChange={() => handleSelectCheckbox(fl.value)}
-          >
-            {fl.label}
-          </Checkbox>
-        ))}
+        <div className="filter__flavor__select">
+          {FLAVOR_CHECKBOXES.map((fl) => (
+            <Checkbox
+              key={fl.value}
+              checked={filter.flavor.includes(fl.value)}
+              onChange={() => handleSelectCheckbox(fl.value)}
+            >
+              {fl.label}
+            </Checkbox>
+          ))}
+        </div>
       </div>
 
       <div className="filter__pricing">

@@ -27,3 +27,7 @@ export const getOrinalRoute = (fullPath: string) => {
   if (!pathArr.length) return "/";
   return pathArr[1];
 };
+
+export const upperCase = (text: string) => {
+  return text.charAt(0).toUpperCase() + text.slice(1, text.length);
+};

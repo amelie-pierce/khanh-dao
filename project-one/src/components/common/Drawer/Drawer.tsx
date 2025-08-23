@@ -4,12 +4,14 @@ import ClickAwayListener from "../ClickawayListener/ClickawayListener";
 import "./Drawer.scss";
 
 const Drawer = (props: DrawerProps) => {
-  const { open, onClose, children } = props;
+  const { open, onClose, component } = props;
+
+  const openClass = open ? "--open" : "";
 
   return (
-    <div className={"draw-wrapper"}>
-      <div className={combineClassNames("drawer", open ? "--open" : "")}>
-        <ClickAwayListener onClickAway={onClose}>{children}</ClickAwayListener>
+    <div className={combineClassNames("drawer__wrapper", openClass)}>
+      <div className={combineClassNames("drawer", openClass)}>
+        <ClickAwayListener onClickAway={onClose}>{component}</ClickAwayListener>
       </div>
     </div>
   );

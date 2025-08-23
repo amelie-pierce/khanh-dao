@@ -3,12 +3,10 @@ import type { CustomSearchParams, Product } from "@/types";
 
 // LOGIC HANDLE DATA
 const filterData = (params: CustomSearchParams) => {
-  const { min = 0, max = 20, flavor } = params;
+  const { min = 0, max = 100, flavor } = params;
   const filteredData = PRODUCTS.filter((product) => {
     const flavors = flavor?.split(",") || [];
     const hasFlavorFilter = Boolean(flavors.filter(Boolean).length);
-
-    console.log("checking data ", hasFlavorFilter);
 
     // IF having no Flavor filter will ignored result of Product Flavors
     const flavorCondition =

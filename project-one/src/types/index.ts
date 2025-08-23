@@ -57,7 +57,12 @@ export interface Modal {
   content?: string;
   children?: ReactNode;
   className?: string;
-  onTriggerModal?: (title: string, content: string) => void;
+  confirmCallback?: () => void;
+  onTriggerModal?: (
+    title: string,
+    content: string,
+    confirmCallback?: () => void
+  ) => void;
   onConfirm: () => void;
   onCancel: () => void;
 }
@@ -77,8 +82,9 @@ export interface FlexBox {
 
 export interface Drawer {
   open: boolean;
+  component?: ReactNode;
   onClose: () => void;
-  onTriggerDrawer?: () => void;
+  onTriggerDrawer?: ({ component }: { component: ReactNode }) => void;
   children?: ReactNode;
 }
 
@@ -93,6 +99,7 @@ export interface User {
 }
 
 export type ChocolateFlavor = "milk" | "dark" | "mixed";
+
 export interface Product {
   name: string;
   id: string;

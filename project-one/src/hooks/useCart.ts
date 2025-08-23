@@ -34,7 +34,6 @@ const useCart = create<Cart>((set, get) => {
       setCartItem(currentItems);
     },
     removeItem: (itemId) => {
-      debugger;
       const newItems = get().items;
       delete newItems[itemId];
 

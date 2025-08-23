@@ -42,7 +42,7 @@ h5 {
   width: inherit;
   display: inline-block;
 
-  & .truncated {
+  &.truncated {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
