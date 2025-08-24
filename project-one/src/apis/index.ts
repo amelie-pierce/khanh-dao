@@ -3,7 +3,8 @@ import type { CustomSearchParams, Product } from "@/types";
 
 // LOGIC HANDLE DATA
 const filterData = (params: CustomSearchParams) => {
-  const { min = 0, max = 100, flavor } = params;
+  const { min = 0, max = 100, flavor, keyword } = params;
+  console.log("checking keyword", keyword);
   const filteredData = PRODUCTS.filter((product) => {
     const flavors = flavor?.split(",") || [];
     const hasFlavorFilter = Boolean(flavors.filter(Boolean).length);
@@ -12,9 +13,20 @@ const filterData = (params: CustomSearchParams) => {
     const flavorCondition =
       (hasFlavorFilter && flavors.includes(product.flavor!)) || true;
 
-    return product.price >= min && product.price <= max && flavorCondition;
-  });
+    const pricingCondition = product.price >= min && product.price <= max;
+    const keywordCondition =
+      keyword && keyword !== "undefined"
+        ? product.name
+            .trim()
+            .toLowerCase()
+            .includes(keyword.trim().toLowerCase())
+        : true;
 
+    console.log("checking condition", keywordCondition);
+
+    return pricingCondition && flavorCondition && keywordCondition;
+  });
+  console.log("checking filterdata", filteredData);
   return filteredData;
 };
 
@@ -51,6 +63,8 @@ export const fetchProducts = (
   callback: (total: number) => void
 ): Promise<Product[]> =>
   new Promise((resolve, reject) => {
-    resolve(generateData(params, callback));
-    reject("Something went wrong when fetching products");
+    setTimeout(() => {
+      resolve(generateData(params, callback));
+      reject("Something went wrong when fetching products");
+    }, 500);
   });

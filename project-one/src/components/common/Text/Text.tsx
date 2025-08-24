@@ -10,6 +10,7 @@ const Text = (props: TextProps) => {
     variant,
     fontWeight = 400,
     align,
+    color,
   } = props;
 
   const sizeMapper = {
@@ -50,6 +51,7 @@ const Text = (props: TextProps) => {
       style={{
         fontWeight,
         textAlign: align || "inherit",
+        color,
       }}
       className={`${className || ""} ${combineClassNames(
         "text",

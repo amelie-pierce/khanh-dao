@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import type { InputHTMLAttributes, ReactNode } from "react";
 
 export type Icon = {
   classes?: string;
@@ -10,9 +10,15 @@ export type TextSize = "title" | "text-lg" | "text-md" | "text-sm";
 export type TextVariant = "h1" | "h2" | "h3" | "h4" | "h5" | "p";
 export type MenuItemState = "default" | "active" | "disabled";
 export type ButtonVariant = "primary" | "secondary";
+
 export type MenuItem = {
   value: string | number;
   label: string;
+};
+
+export type MenuPosition = {
+  top: number;
+  left: number;
 };
 
 export interface Menu {
@@ -22,7 +28,14 @@ export interface Menu {
   onSelectValue: (value: string | number) => void;
   disabledValues?: string[];
   selectedValue?: string;
+  targetPos?: MenuPosition;
 }
+
+export type TextField = InputHTMLAttributes<HTMLInputElement> & {
+  startIcon?: React.ReactNode;
+  disabled?: boolean;
+  errorText?: string;
+};
 
 export interface Text {
   children: ReactNode;
@@ -116,6 +129,7 @@ export type CustomSearchParams = {
   max?: number;
   total?: number;
   flavor?: string;
+  keyword?: string;
 };
 
 export type LimitState = {

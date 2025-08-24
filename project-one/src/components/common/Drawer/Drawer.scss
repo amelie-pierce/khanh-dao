@@ -4,8 +4,7 @@
   position: absolute;
   z-index: 3;
   visibility: hidden;
-  transition: transform 0.5s ease-in-out;
-
+  transition: all 0.5s ease-out;
   &--open {
     visibility: visible;
   }
@@ -13,6 +12,7 @@
 
 .drawer {
   top: 0;
+
   display: flex;
   position: relative;
   justify-content: center;

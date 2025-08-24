@@ -7,10 +7,6 @@ import "./Toast.scss";
 const Toast = () => {
   const { message, type } = useToast();
 
-  if (!message) {
-    return null; // Don't render if there's no message
-  }
-
   const toastTypeMapper = {
     success: "--success",
     error: "--error",
@@ -18,7 +14,13 @@ const Toast = () => {
   };
 
   return (
-    <div className={combineClassNames("toast", toastTypeMapper[type])}>
+    <div
+      className={combineClassNames(
+        "toast",
+        toastTypeMapper[type],
+        message ? "--show" : ""
+      )}
+    >
       <ErrorIcon size={24} />
       <Text size="text-lg">{message}</Text>
     </div>

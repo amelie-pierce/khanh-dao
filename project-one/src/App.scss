@@ -33,6 +33,7 @@ body {
 
   &--drawer-opened {
     filter: blur(1px);
+    pointer-events: none;
   }
 
   @include responsive("desktop") {

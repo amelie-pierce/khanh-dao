@@ -1,5 +1,6 @@
 import { Button, Text, TextField } from "@/components/common";
 import { ERoute } from "@/configs/router";
+import { useScreenSize } from "@/hooks";
 import useLocalStorage from "@/hooks/useLocalStorage";
 import useToast from "@/hooks/useToast";
 import { useEffect, useRef } from "react";
@@ -10,6 +11,7 @@ const LoginPage = () => {
   const { setAccessInfo, getAcessInfo } = useLocalStorage();
   const navigate = useNavigate();
   const { showToast } = useToast();
+  const { isMobile } = useScreenSize();
 
   const idRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
@@ -40,11 +42,22 @@ const LoginPage = () => {
     <div className="login-page">
       <Text variant="h5"> Login</Text>
       <div className="login-page__fields">
-        <TextField placeholder="Username *" ref={idRef} />
-        <TextField placeholder="Password *" ref={passwordRef} type="password" />
+        <TextField
+          placeholder="Username *"
+          ref={idRef}
+          width={isMobile ? 330 : 350}
+        />
+        <TextField
+          placeholder="Password *"
+          ref={passwordRef}
+          type="password"
+          width={isMobile ? 330 : 350}
+        />
       </div>
       <Button width={180} height={40} onClick={handleLogin}>
-        Login
+        <Text size="title" align="center">
+          Login
+        </Text>
       </Button>
     </div>
   );

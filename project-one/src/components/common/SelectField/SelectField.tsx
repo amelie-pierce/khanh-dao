@@ -1,19 +1,19 @@
 import { ArrowDown } from "@/assets/icons";
 import ArrowUp from "@/assets/icons/ArrowUp";
-import type { ISelectField } from "@/types";
+import type { SelectField } from "@/types";
 import { checkDisabled, combineClassNames } from "@/utils/common";
 import { useState } from "react";
 import Menu from "../Menu/Menu";
 import Text from "../Text/Text";
 import "./SelectField.scss";
 
-const SelectField = (props: ISelectField) => {
+const SelectField = (props: SelectField) => {
   const { options, disabled = false } = props;
   const [expended, toggleExpand] = useState<boolean>(false);
   const [selectedValue, setSelectedValue] = useState<string>();
 
-  const onSelectValue = (value: string) => {
-    setSelectedValue(value);
+  const onSelectValue = (value: string | number) => {
+    setSelectedValue(value as string);
     toggleExpand(false);
   };
 

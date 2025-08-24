@@ -3,12 +3,13 @@ import { forwardRef, type InputHTMLAttributes } from "react";
 import Text from "../Text/Text";
 import "./TextField.scss";
 
-type TOwnProps = InputHTMLAttributes<HTMLInputElement> & {
+type TextFieldProps = InputHTMLAttributes<HTMLInputElement> & {
   startIcon?: React.ReactNode;
   disabled?: boolean;
   errorText?: string;
 };
-const TextField = forwardRef<HTMLInputElement, TOwnProps>((props, ref) => {
+
+const TextField = forwardRef<HTMLInputElement, TextFieldProps>((props, ref) => {
   const {
     startIcon,
     disabled = false,

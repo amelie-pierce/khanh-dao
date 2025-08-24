@@ -9,7 +9,7 @@
 .text-field__wrapper {
   display: flex;
   align-items: center;
-  height: 40px;
+  height: $text-field-height;
   background-color: $cold-ash;
   border-radius: 8px;
 
@@ -38,6 +38,7 @@
   border: none;
   background-color: transparent;
   border-radius: 8px;
+  padding: 0rem;
   padding-left: 10px;
 
   &:focus {

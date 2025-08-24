@@ -17,6 +17,7 @@ const usePaginator = () => {
   const max = Number(parsedSearchParms.max) || 100;
   const total = Number(parsedSearchParms.total) || PRODUCTS.length;
   const maxPage = Math.ceil(total / limit);
+  const keyword = parsedSearchParms.keyword || "";
 
   const onUpdateParams = (args: CustomSearchParams) => {
     const parsedSearchURL = new URLSearchParams({
@@ -48,6 +49,7 @@ const usePaginator = () => {
       flavor,
       min,
       max,
+      keyword,
     },
     maxPage,
     pageSteps,

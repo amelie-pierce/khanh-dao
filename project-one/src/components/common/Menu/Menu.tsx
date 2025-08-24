@@ -1,10 +1,11 @@
 import type { Menu as MenuProps } from "@/types";
+import { forwardRef } from "react";
 import ClickAwayListener from "../ClickawayListener/ClickawayListener";
 import Text from "../Text/Text";
 import "./Menu.scss";
 import MenuItem from "./MenuItem";
 
-const Menu = (props: MenuProps) => {
+const Menu = forwardRef<HTMLDivElement, MenuProps>((props, ref) => {
   const {
     open,
     onClose,
@@ -12,6 +13,7 @@ const Menu = (props: MenuProps) => {
     onSelectValue,
     disabledValues,
     selectedValue,
+    targetPos,
   } = props;
 
   if (!open) {
@@ -23,13 +25,24 @@ const Menu = (props: MenuProps) => {
     onClose();
   };
 
+  const maxLeft =
+    (targetPos?.left || 0) < 150 ? 0 : (targetPos?.left || 0) - 150;
+  console.log(maxLeft);
+
   return (
     <ClickAwayListener onClickAway={onClose}>
-      <div className="menu">
+      <div
+        className="menu"
+        ref={ref}
+        style={{
+          top: (targetPos?.top || 0) + 30,
+          left: maxLeft,
+        }}
+      >
         {options.map((o) => (
           <MenuItem
             onClick={() => onSelect(o.value)}
-            disabled={disabledValues?.includes(o) || false}
+            disabled={disabledValues?.includes(o.value as string) || false}
             selected={selectedValue === o.value}
           >
             <Text size="title">{o.label}</Text>
@@ -38,5 +51,6 @@ const Menu = (props: MenuProps) => {
       </div>
     </ClickAwayListener>
   );
-};
+});
+
 export default Menu;

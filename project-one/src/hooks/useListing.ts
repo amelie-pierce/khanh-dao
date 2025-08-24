@@ -5,7 +5,7 @@ import usePaginator from "./usePaginator";
 
 const useListing = () => {
   const { searchParams, onUpdateParams } = usePaginator();
-  const { limit, page, flavor, min, max } = searchParams;
+  const { limit, page, flavor, min, max, keyword } = searchParams;
 
   const [data, setData] = useState<{ products: Product[]; loading: boolean }>({
     products: [],
@@ -13,24 +13,25 @@ const useListing = () => {
   });
 
   const fetchData = async () => {
-    try {
-      setData((prev) => ({ ...prev, loading: true }));
-      setTimeout(async () => {
-        const parsedData = { limit, page, min, max, flavor };
+    setData((prev) => ({ ...prev, loading: true }));
 
-        const data = await fetchProducts(parsedData, (total) =>
-          onUpdateParams({ ...searchParams, total })
-        );
-        setData({ products: data, loading: false });
-      }, 500);
+    try {
+      const parsedData = { limit, page, min, max, flavor, keyword };
+
+      const data = await fetchProducts(parsedData, (total) =>
+        onUpdateParams({ ...searchParams, total })
+      );
+
+      setData({ products: data, loading: false });
     } catch (e) {
       console.log(e);
     }
   };
 
+  // WATCHER: Observe params changed to re-fetching new data
   useEffect(() => {
     fetchData();
-  }, [limit, page, flavor, min, max]);
+  }, [limit, page, flavor, min, max, keyword]);
 
   return { products: data.products || [], loading: data.loading };
 };

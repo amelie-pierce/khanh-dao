@@ -1,8 +1,9 @@
 import { FilterIcon, SearchIcon } from "@/assets/icons";
 import { Filter, Pagination } from "@/components";
 import { IconButton, ProductCard, Text, TextField } from "@/components/common";
-import { useDrawer, useScreenSize } from "@/hooks";
+import { useDrawer, usePaginator, useScreenSize } from "@/hooks";
 import useListing from "@/hooks/useListing";
+import { useEffect, useState } from "react";
 import "./ListingPage.scss";
 
 type TOwnProps = {};
@@ -12,19 +13,35 @@ const ListingPage = (props: TOwnProps) => {
   const { products, loading } = useListing();
   const { isMobile } = useScreenSize();
   const { onTriggerDrawer } = useDrawer();
+  const { searchParams, onUpdateParams } = usePaginator();
+  const [searchText, setSearchText] = useState<string>();
+  const [timeout, setTimeoutRef] = useState<NodeJS.Timeout>();
 
   const renderListing = () => {
     if (loading) {
-      return <Text>Data is fetching...</Text>;
+      return <Text size="title">Data is fetching...</Text>;
     }
 
     if (!products.length) {
-      return <Text>No data available</Text>;
+      return <Text variant="h5">No data available</Text>;
     }
     return products.map((d) => (
       <ProductCard key={d.id} {...d} imageSrc={d.images[0]} />
     ));
   };
+
+  useEffect(() => {
+    if (timeout) {
+      clearTimeout(timeout);
+    }
+    const timer = setTimeout(() => {
+      onUpdateParams({ ...searchParams, keyword: searchText });
+    }, 500);
+    setTimeoutRef(timer);
+    () => {
+      clearTimeout(timeout);
+    };
+  }, [searchText]);
 
   return (
     <div className="listing-page">
@@ -35,6 +52,10 @@ const ListingPage = (props: TOwnProps) => {
             width={250}
             startIcon={<SearchIcon size={24} />}
             placeholder="Type here to search"
+            value={searchText}
+            onChange={(e) => {
+              setSearchText(e.target.value);
+            }}
           />
           {isMobile && (
             <IconButton

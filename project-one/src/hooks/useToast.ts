@@ -8,7 +8,7 @@ const useToast = create<Toast>((set, _) => ({
   showToast: (
     message: string,
     type: "success" | "error" | "info",
-    duration = 3000
+    duration = 2000
   ) => {
     set({ message, type, duration });
     setTimeout(() => {
