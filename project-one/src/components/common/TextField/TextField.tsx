@@ -1,6 +1,6 @@
 import { combineClassNames } from "@/utils/common";
 import { forwardRef, type InputHTMLAttributes } from "react";
-import Text from "../Text/Text";
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import "./TextField.scss";
 
 type TextFieldProps = InputHTMLAttributes<HTMLInputElement> & {
@@ -46,11 +46,7 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>((props, ref) => {
           )}
         />
       </div>
-      {errorText && (
-        <Text className="error-message" size="text-lg">
-          {errorText}
-        </Text>
-      )}
+      {errorText && <ErrorMessage message={errorText} />}
     </div>
   );
 });

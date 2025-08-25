@@ -49,10 +49,11 @@ export interface Text {
 }
 
 export interface SelectField {
-  options: string[];
+  options: MenuItem[];
   value?: string;
   onChange?: (value: string) => void;
   disabled?: boolean;
+  width?: number | string;
 }
 
 export interface Checkbox {

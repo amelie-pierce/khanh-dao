@@ -17,7 +17,7 @@ const InputField = (props: TOwnProps) => {
       render={({ field, fieldState }) => (
         <TextField
           {...inputProps}
-          value={field.value}
+          value={field.value as string}
           onChange={field.onChange}
           errorText={fieldState.error?.message}
         />

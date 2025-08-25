@@ -1,46 +1,33 @@
-import { Button, Text } from "@/components/common";
-import { InputField, RangeField } from "@/components/FormItem";
-import { schema } from "@/schemes";
+import { Text } from "@/components/common";
+import { InputField, RangeField, SelectForm } from "@/components/FormItem";
 import type { DemoForm } from "@/types/demo";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { useForm } from "react-hook-form";
+import { useFormContext } from "react-hook-form";
+
+const SHAPE_OPTIONS = [
+  { value: "box", label: "Box" },
+  { value: "sphere", label: "Sphere" },
+];
 
 const Form = () => {
   const {
     control,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<DemoForm>({
-    resolver: yupResolver(schema),
-    defaultValues: {
-      expectedSalary: {
-        min: 0,
-        max: 10,
-      },
-    },
-  });
-
-  const onSubmitForm = (formValues: DemoForm) => {
-    console.log("checking form values", formValues);
-  };
+    formState: { errors }, // For check error if has
+  } = useFormContext<DemoForm>();
 
   return (
     <>
       <Text variant="h5">Form Controller</Text>
       <div className="demo__page__section__item">
         <InputField
+          width="80%"
           name="name"
           control={control}
-          placeholder="Input your name"
+          placeholder="Input your product name"
         />
-        <InputField
-          name="major"
-          control={control}
-          placeholder="Tell me your major"
-        />
-        <RangeField name="expectedSalary" control={control} />
 
-        <Button onClick={handleSubmit(onSubmitForm)}>Submit</Button>
+        <SelectForm name="shape" control={control} options={SHAPE_OPTIONS} />
+        <Text size="title">Input your expected range</Text>
+        <RangeField name="range" control={control} />
       </div>
     </>
   );

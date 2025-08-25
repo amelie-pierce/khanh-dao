@@ -2,6 +2,7 @@ export { default as Button } from "./Button/Button";
 export { default as Checkbox } from "./Checkbox/Checkbox";
 export { default as ClickAwayListener } from "./ClickawayListener/ClickawayListener";
 export { default as Drawer } from "./Drawer/Drawer";
+export { default as ErrorMessage } from "./ErrorMessage/ErrorMessage";
 export { default as FlexBox } from "./FlexBox/FlexBox";
 export { default as IconButton } from "./IconButton/IconButton";
 export { default as LinkItem } from "./LinkItem/LinkItem";

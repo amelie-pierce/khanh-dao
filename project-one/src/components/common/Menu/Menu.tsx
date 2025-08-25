@@ -26,7 +26,9 @@ const Menu = forwardRef<HTMLDivElement, MenuProps>((props, ref) => {
   };
 
   const maxLeft =
-    (targetPos?.left || 0) < 150 ? 0 : (targetPos?.left || 0) - 150;
+    (targetPos?.left || 0) < 150
+      ? targetPos?.left
+      : (targetPos?.left || 0) - 150;
   console.log(maxLeft);
 
   return (
