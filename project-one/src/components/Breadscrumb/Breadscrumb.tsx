@@ -4,9 +4,7 @@ import { useLocation } from "react-router";
 import { LinkItem } from "../common";
 import "./Breadscrumb.scss";
 
-type TOwnProps = {};
-const Breadscrum = (props: TOwnProps) => {
-  const {} = props;
+const Breadscrum = () => {
   const location = useLocation();
 
   const BREADSCRUMB = location.pathname

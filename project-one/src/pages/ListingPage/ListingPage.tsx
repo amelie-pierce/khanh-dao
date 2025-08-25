@@ -6,16 +6,14 @@ import useListing from "@/hooks/useListing";
 import { useEffect, useState } from "react";
 import "./ListingPage.scss";
 
-type TOwnProps = {};
+const ListingPage = () => {
+  const [searchText, setSearchText] = useState<string>();
+  const [timeout, setTimeoutRef] = useState<NodeJS.Timeout>();
 
-const ListingPage = (props: TOwnProps) => {
-  const {} = props;
   const { products, loading } = useListing();
   const { isMobile } = useScreenSize();
   const { onTriggerDrawer } = useDrawer();
   const { searchParams, onUpdateParams } = usePaginator();
-  const [searchText, setSearchText] = useState<string>();
-  const [timeout, setTimeoutRef] = useState<NodeJS.Timeout>();
 
   const renderListing = () => {
     if (loading) {
@@ -30,6 +28,7 @@ const ListingPage = (props: TOwnProps) => {
     ));
   };
 
+  // Debounce searching
   useEffect(() => {
     if (timeout) {
       clearTimeout(timeout);

@@ -23,7 +23,6 @@ const CartItemDesktop = (item: ItemCart) => {
         `${name} will be removed from your cart`,
         () => {
           removeItem(id);
-
           showToast("Item has been removed", "info");
         }
       );

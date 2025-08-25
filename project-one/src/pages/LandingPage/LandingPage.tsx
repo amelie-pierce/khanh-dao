@@ -14,6 +14,7 @@ const LandingPage = () => {
 
   return (
     <div className="landing-page">
+      {/* SECTION FOR MAIN CARD*/}
       <div className="main card">
         <Text variant="h5" fontWeight={600}>
           Khanh Dao
@@ -34,8 +35,10 @@ const LandingPage = () => {
           and delivering high-quality user experiences
         </p>
       </div>
+
       <div className="details">
         <div className={combineClassNames("details", "__first-row")}>
+          {/* SECTION FOR SKILLS*/}
           <div className="card">
             <Text variant="h5">Skills</Text>
             <div>
@@ -46,6 +49,8 @@ const LandingPage = () => {
               ))}
             </div>
           </div>
+
+          {/* SECTION FOR HOBBIES*/}
           <div className="card">
             <Text variant="h5">Hobbies</Text>
             <div>
@@ -57,6 +62,8 @@ const LandingPage = () => {
             </div>
           </div>
         </div>
+
+        {/* SECTION FOR PAST PROJECTS*/}
         <div className="past-jobs">
           <div className="card ">
             <Text variant="h5">Past projects</Text>
