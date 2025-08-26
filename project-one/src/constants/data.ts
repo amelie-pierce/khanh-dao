@@ -1,4 +1,4 @@
-import type { Product } from "@/types";
+import type { ChocolateFlavor, Product } from "@/types/listing";
 
 export const PRODUCTS: Product[] = [
   {
@@ -121,8 +121,18 @@ export const PRODUCTS: Product[] = [
     images: [""],
     flavor: "dark",
   },
+  {
+    id: "16",
+    name: "SKITTLES",
+    price: 29.5,
+    desc: "SKITTLES & STARBURST Assorted Candy Variety Pack for Holidays, Candy Assortment, Party Favors, 62.79 oz (30 Count) Bulk Box",
+    images: ["skittles_1.png", "skittles_1.png"],
+    flavor: "mixed",
+  },
 ].map((item) => ({
   ...item,
+  rating: Math.floor(Math.random() * 6),
+  flavor: item.flavor as ChocolateFlavor,
   images: item.images.map((img) =>
     img ? `/images/products/${img}` : "/images/no_image.png"
   ),

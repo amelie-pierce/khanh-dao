@@ -1,7 +1,7 @@
 import type { Modal } from "@/types";
 import { create } from "zustand";
 
-const useModal = create<Modal>((set, get) => ({
+const useModal = create<Modal>((set, _) => ({
   open: false,
   title: "",
   content: "",

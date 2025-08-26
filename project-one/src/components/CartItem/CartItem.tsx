@@ -1,5 +1,5 @@
 import { useScreenSize } from "@/hooks";
-import type { ItemCart } from "@/types";
+import type { ItemCart } from "@/types/listing";
 import CartItemDesktop from "./CartItemDesktop";
 import CartItemMobile from "./CartItemMobile";
 

@@ -1,5 +1,6 @@
 import { LOCAL_STORAGE_KEYS } from "@/constants";
-import type { ItemCart, UserInfo } from "@/types";
+import type { ItemCart } from "@/types/listing";
+import type { UserInfo } from "@/types/user";
 
 const useLocalStorage = () => {
   const getAcessInfo = () => {

@@ -1,5 +1,5 @@
 import { fetchProducts } from "@/apis";
-import type { Product } from "@/types";
+import type { Product } from "@/types/listing";
 import { useEffect, useState } from "react";
 import usePaginator from "./usePaginator";
 

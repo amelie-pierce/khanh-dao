@@ -1,6 +1,6 @@
 import { Delete } from "@/assets/icons";
 import { useCart, useModal, useToast } from "@/hooks";
-import type { ItemCart } from "@/types";
+import type { ItemCart } from "@/types/listing";
 import { currencyConverter } from "@/utils/common";
 import { IconButton, Text } from "../common";
 import QuantityController from "../QuantityController/QuantityController";
@@ -42,7 +42,7 @@ const CartItemDesktop = (item: ItemCart) => {
         <div className="cart-item__image">
           <img src={images[0]} />
         </div>
-        <Text size="title" fontWeight={800}>
+        <Text size="title" fontWeight={800} maxLine={2}>
           {name}
         </Text>
       </div>

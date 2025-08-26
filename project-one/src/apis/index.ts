@@ -1,5 +1,5 @@
 import { PRODUCTS } from "@/constants/data";
-import type { CustomSearchParams, Product } from "@/types";
+import type { CustomSearchParams, Product } from "@/types/listing";
 
 // LOGIC HANDLE DATA
 const filterData = (params: CustomSearchParams) => {

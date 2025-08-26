@@ -1,11 +1,10 @@
-import type { RangeParams } from "@/types";
-import type { DemoForm } from "@/types/demo";
+import type { RangeParams } from "@/types/listing";
 import { Controller, type Control } from "react-hook-form";
 import { RangeSlider, Text } from "../common";
 
 type TOwnProps = {
-  name: keyof DemoForm;
-  control: Control<DemoForm>;
+  name: string;
+  control: Control<any>;
 };
 
 const RangeField = (props: TOwnProps) => {

@@ -1,10 +1,11 @@
+import { Star } from "@/assets/icons";
 import { ImageCarousel } from "@/components";
-import { Button, Text } from "@/components/common";
+import { Button, Chip, Text } from "@/components/common";
 import { ERoute } from "@/configs/router";
 import { PRODUCTS } from "@/constants/data";
 import { useCart, useScreenSize, useToast } from "@/hooks";
-import type { Product } from "@/types";
-import { currencyConverter } from "@/utils/common";
+import type { Product } from "@/types/listing";
+import { currencyConverter, upperCase } from "@/utils/common";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import "./ProducDetailPage.scss";
@@ -41,6 +42,21 @@ const ProductDetailsPage = (props: TOwnProps) => {
     navigate("/" + ERoute.CHECKOUT);
   };
 
+  const renderStar = (rating: number) => {
+    const stars = Array(5);
+
+    for (let i = 1; i <= 5; i++) {
+      if (i <= rating) {
+        stars.push(<Star size={20} fill />);
+      } else {
+        stars.push(<Star size={20} />);
+      }
+    }
+    return (
+      <div className="detail__page__main__rating">{stars.map((s) => s)}</div>
+    );
+  };
+
   const ProductTitle = ({ children }: { children?: string }) => {
     return isMobile ? (
       <Text size="title" fontWeight={800}>
@@ -63,6 +79,18 @@ const ProductDetailsPage = (props: TOwnProps) => {
           <Text variant="p" size="text-lg">
             {selectedProduct.desc}
           </Text>
+
+          {selectedProduct.flavor && (
+            <div className="detail__page__main__flavor">
+              <Text size="title" fontWeight={600}>
+                Flavor
+              </Text>
+              <Chip>{upperCase(selectedProduct.flavor)}</Chip>
+            </div>
+          )}
+
+          {selectedProduct.rating !== undefined &&
+            renderStar(selectedProduct.rating)}
         </div>
       </div>
       <div className="detail__page__cta">

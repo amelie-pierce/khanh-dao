@@ -16,6 +16,7 @@ const DemoPage = () => {
   const formInstance = useForm<DemoForm>({
     resolver: yupResolver(schema),
     defaultValues: {
+      shape: "box",
       range: {
         min: 0,
         max: 10,

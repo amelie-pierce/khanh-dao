@@ -1,4 +1,4 @@
-import type { Cart, ItemCart } from "@/types";
+import type { Cart, ItemCart } from "@/types/listing";
 import { create } from "zustand";
 import useLocalStorage from "./useLocalStorage";
 

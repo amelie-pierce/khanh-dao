@@ -1,5 +1,5 @@
 import { RANGE_GAP } from "@/constants";
-import type { RangeParams } from "@/types";
+import type { RangeParams } from "@/types/listing";
 import { currencyConverter } from "@/utils/common";
 import Text from "../Text/Text";
 import "./RangeSlider.scss";

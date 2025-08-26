@@ -13,7 +13,7 @@ const GlobalMenu: React.FC<MenuProps> = ({ options, parentPos, onClose }) => {
   }
 
   return (
-    <ClickAwayListener onClickAway={onClose}>
+    <ClickAwayListener onClickAway={onClose} shouldListen={Boolean(parentPos)}>
       <div>
         {parentPos && (
           <div

@@ -1,6 +1,7 @@
-import { Text } from "@/components/common";
-import { InputField, RangeField, SelectForm } from "@/components/FormItem";
+import { Slider, Text } from "@/components/common";
+import { InputField, SelectForm } from "@/components/FormItem";
 import type { DemoForm } from "@/types/demo";
+import { useState } from "react";
 import { useFormContext } from "react-hook-form";
 
 const SHAPE_OPTIONS = [
@@ -9,10 +10,9 @@ const SHAPE_OPTIONS = [
 ];
 
 const Form = () => {
-  const {
-    control,
-    formState: { errors }, // For check error if has
-  } = useFormContext<DemoForm>();
+  const { control } = useFormContext<DemoForm>();
+
+  const [value, setValue] = useState(10);
 
   return (
     <>
@@ -27,7 +27,14 @@ const Form = () => {
 
         <SelectForm name="shape" control={control} options={SHAPE_OPTIONS} />
         <Text size="title">Input your expected range</Text>
-        <RangeField name="range" control={control} />
+        {/* <RangeField name="range" control={control} /> */}
+
+        <Slider
+          value={value}
+          onChange={(e) => {
+            setValue(e);
+          }}
+        />
       </div>
     </>
   );

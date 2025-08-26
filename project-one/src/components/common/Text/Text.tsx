@@ -11,6 +11,7 @@ const Text = (props: TextProps) => {
     fontWeight = 400,
     align,
     color,
+    maxLine,
   } = props;
 
   const sizeMapper = {
@@ -52,6 +53,12 @@ const Text = (props: TextProps) => {
         fontWeight,
         textAlign: align || "inherit",
         color,
+        ...(maxLine && {
+          WebkitLineClamp: maxLine.toString(),
+          overflow: "hidden",
+          display: "-webkit-box",
+          WebkitBoxOrient: "vertical",
+        }),
       }}
       className={`${className || ""} ${combineClassNames(
         "text",

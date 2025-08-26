@@ -1,6 +1,6 @@
 import { NULLISH_PAGE } from "@/constants";
 import { PRODUCTS } from "@/constants/data";
-import type { CustomSearchParams } from "@/types";
+import type { CustomSearchParams } from "@/types/listing";
 import { useSearchParams } from "react-router";
 
 const usePaginator = () => {

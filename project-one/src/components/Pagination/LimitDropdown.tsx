@@ -46,7 +46,10 @@ const LimitDropdown = () => {
         toggleExpanded(true);
       }}
     >
-      <ClickAwayListener onClickAway={() => toggleExpanded(false)}>
+      <ClickAwayListener
+        onClickAway={() => toggleExpanded(false)}
+        shouldListen={true}
+      >
         <div className="limit">{renderLimitItem()}</div>
       </ClickAwayListener>
     </div>

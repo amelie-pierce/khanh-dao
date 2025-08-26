@@ -2,7 +2,7 @@ import type {
   ChocolateFlavor,
   CustomSearchParams,
   FilterParams,
-} from "@/types";
+} from "@/types/listing";
 
 export const NULLISH_PAGE = "...";
 

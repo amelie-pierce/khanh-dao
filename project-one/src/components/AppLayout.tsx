@@ -1,3 +1,4 @@
+import { ERoute } from "@/configs/router";
 import useAuth from "@/hooks/useAuth";
 import useLocalStorage from "@/hooks/useLocalStorage";
 import { useEffect } from "react";
@@ -20,7 +21,7 @@ const AppLayout = () => {
       return;
     }
 
-    navigate("/login");
+    navigate(`/${ERoute.LOGIN}`);
   }, []);
 
   return (

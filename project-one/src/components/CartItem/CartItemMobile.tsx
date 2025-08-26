@@ -1,6 +1,6 @@
 import { Delete } from "@/assets/icons";
 import { useCart, useModal, useToast } from "@/hooks";
-import type { ItemCart } from "@/types";
+import type { ItemCart } from "@/types/listing";
 import { currencyConverter } from "@/utils/common";
 import { IconButton, Text } from "../common";
 import QuantityController from "../QuantityController/QuantityController";
@@ -36,7 +36,7 @@ const CartItemMobile = (item: ItemCart) => {
       </div>
       <div className="cart-item__desc">
         <div className="cart-item__desc__main">
-          <Text size="text-lg" fontWeight={600}>
+          <Text size="text-lg" fontWeight={600} className="truncated">
             {name}
           </Text>
           <Text

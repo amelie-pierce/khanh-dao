@@ -5,7 +5,11 @@ import {
 } from "@/constants";
 import { useDrawer } from "@/hooks";
 import usePaginator from "@/hooks/usePaginator";
-import type { ChocolateFlavor, FilterParams, RangeParams } from "@/types";
+import type {
+  ChocolateFlavor,
+  FilterParams,
+  RangeParams,
+} from "@/types/listing";
 import { useState } from "react";
 import { Button, Checkbox, RangeSlider, Text } from "../common";
 import "./Filter.scss";

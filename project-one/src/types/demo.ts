@@ -1,11 +1,10 @@
 import type { Scene } from "@babylonjs/core";
-import type { RangeParams } from ".";
 
 export type TShape = "box" | "sphere";
 
 export interface DemoForm {
   name: string;
-  range: RangeParams;
+  size: number;
   shape: TShape;
 }
 

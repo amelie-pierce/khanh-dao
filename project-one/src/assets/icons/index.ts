@@ -2,6 +2,7 @@ export { default as AvatarBadge } from "./AvatarBadge";
 export { default as Checkbox } from "./Checkbox";
 export { default as Checked } from "./Checked";
 export { default as Chocolate } from "./Chocolate";
+export { default as ClearIcon } from "./ClearIcon";
 export { default as Delete } from "./Delete";
 export { default as DissasitifiedIcon } from "./DissastifyIcon";
 export { default as ErrorIcon } from "./ErrorIcon";
@@ -11,6 +12,7 @@ export { default as MinusOutlined } from "./MinusOutlined";
 export { default as PlusOutlined } from "./PlusOutlined";
 export { default as SearchIcon } from "./SearchIcon";
 export { default as ShoppingCart } from "./ShoppingCart";
+export { default as Star } from "./Star";
 
 // NAVIGATIONS
 export { default as ArrowDown } from "./ArrowDown";
