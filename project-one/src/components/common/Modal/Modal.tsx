@@ -13,7 +13,7 @@ const Modal = () => {
   }
 
   return (
-    <ClickAwayListener onClickAway={onClose}>
+    <ClickAwayListener onClickAway={onClose} shouldListen={open}>
       <div className="modal-wrapper">
         <div className="modal">
           <div className="modal__header">

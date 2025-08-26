@@ -3,9 +3,8 @@
   flex-direction: column;
   align-items: start;
   justify-content: start;
-
-  width: 320px;
   row-gap: 32px;
+  min-width: 320px;
 
   &__flavor {
     &__select {

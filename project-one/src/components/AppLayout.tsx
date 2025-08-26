@@ -2,6 +2,8 @@ import useAuth from "@/hooks/useAuth";
 import useLocalStorage from "@/hooks/useLocalStorage";
 import { useEffect } from "react";
 import { Outlet, useNavigate } from "react-router";
+import { ProtectedPaggeFallback, PublicPageFallback } from "./Errors";
+import ErrorWrapper from "./Errors/ErrorWrapper";
 import ProtectedLayout from "./ProtectedLayout";
 import PublicLayout from "./PublicLayout";
 
@@ -25,12 +27,16 @@ const AppLayout = () => {
     <>
       {accessInfo ? (
         <ProtectedLayout>
-          <Outlet />
+          <ErrorWrapper fallback={<ProtectedPaggeFallback />}>
+            <Outlet />
+          </ErrorWrapper>
         </ProtectedLayout>
       ) : (
-        <PublicLayout>
-          <Outlet />
-        </PublicLayout>
+        <ErrorWrapper fallback={<PublicPageFallback />}>
+          <PublicLayout>
+            <Outlet />
+          </PublicLayout>
+        </ErrorWrapper>
       )}
     </>
   );

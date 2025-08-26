@@ -34,12 +34,12 @@ const UserMenu = () => {
       >
         <AvatarBadge size={32} />
       </IconButton>
-
       <Menu
         open={Boolean(menuPos)}
         onClose={() => {
           setMenuPos(undefined);
         }}
+        disabledValues={["1"]}
         onSelectValue={handleSelect}
         targetPos={menuPos}
         options={MENU_ITEMS}

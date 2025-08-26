@@ -15,7 +15,13 @@ const ProductCard = (props: TOwnProps) => {
   const navigate = useNavigate();
   return (
     <div className="product-card" onClick={() => navigate(`/listing/${id}`)}>
-      <img src={imageSrc} alt={`${name}-image`} />
+      <img
+        src={imageSrc}
+        alt={`${name}-image`}
+        onError={(e) => {
+          e.currentTarget.src = "images/no_image.png"; // Handle Error image fallback
+        }}
+      />
 
       <div className="product-card__desc">
         <Text className="truncated" size="text-lg" fontWeight={600}>

@@ -7,7 +7,7 @@ import { useDrawer } from "@/hooks";
 import usePaginator from "@/hooks/usePaginator";
 import type { ChocolateFlavor, FilterParams, RangeParams } from "@/types";
 import { useState } from "react";
-import { Button, Checkbox, Slider, Text } from "../common";
+import { Button, Checkbox, RangeSlider, Text } from "../common";
 import "./Filter.scss";
 
 const Filter = () => {
@@ -75,7 +75,7 @@ const Filter = () => {
         <Text size="title" fontWeight={600}>
           Price Range
         </Text>
-        <Slider ranges={filter.ranges} onUpdateRange={handlePriceRange} />
+        <RangeSlider ranges={filter.ranges} onUpdateRange={handlePriceRange} />
       </div>
 
       <div className="filter__cta">

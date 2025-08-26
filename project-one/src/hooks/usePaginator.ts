@@ -37,7 +37,7 @@ const usePaginator = () => {
     page > 3 ? NULLISH_PAGE : undefined, // Other previous pages
     page > 2 ? page - 1 : undefined,
     page !== 1 && page !== maxPage ? page : undefined, // current page logics
-    page + 2 < maxPage ? page + 1 : undefined,
+    page + 2 <= maxPage ? page + 1 : undefined,
     page < maxPage - 2 ? NULLISH_PAGE : undefined, // Other next page
     maxPage >= 2 ? maxPage : undefined,
   ].filter(Boolean);

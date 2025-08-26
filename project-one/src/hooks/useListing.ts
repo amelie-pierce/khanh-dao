@@ -22,7 +22,9 @@ const useListing = () => {
         onUpdateParams({ ...searchParams, total })
       );
 
-      setData({ products: data, loading: false });
+      if (data) {
+        setData({ products: data, loading: false });
+      }
     } catch (e) {
       console.log(e);
     }

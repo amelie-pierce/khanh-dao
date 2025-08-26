@@ -29,10 +29,9 @@ const Menu = forwardRef<HTMLDivElement, MenuProps>((props, ref) => {
     (targetPos?.left || 0) < 150
       ? targetPos?.left
       : (targetPos?.left || 0) - 150;
-  console.log(maxLeft);
 
   return (
-    <ClickAwayListener onClickAway={onClose}>
+    <ClickAwayListener onClickAway={onClose} shouldListen={open}>
       <div
         className="menu"
         ref={ref}
@@ -44,7 +43,7 @@ const Menu = forwardRef<HTMLDivElement, MenuProps>((props, ref) => {
         {options.map((o) => (
           <MenuItem
             onClick={() => onSelect(o.value)}
-            disabled={disabledValues?.includes(o.value as string) || false}
+            disabled={disabledValues?.includes(o.value.toString()) || false}
             selected={selectedValue === o.value}
           >
             <Text size="title">{o.label}</Text>

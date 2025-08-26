@@ -11,7 +11,7 @@ type TOwnProps = {
 
 const ProtectedLayout = (props: TOwnProps) => {
   const { children } = props;
-  const { open, onClose, component } = useDrawer();
+  const { open } = useDrawer();
 
   return (
     <>
@@ -27,7 +27,7 @@ const ProtectedLayout = (props: TOwnProps) => {
         <Toast />
       </div>
       <Modal />
-      <Drawer open={open} onClose={onClose} component={component} />
+      <Drawer />
     </>
   );
 };

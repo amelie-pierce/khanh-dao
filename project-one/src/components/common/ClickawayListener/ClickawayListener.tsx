@@ -1,9 +1,14 @@
 import { useEffect, useRef } from "react";
 
-type TOwnProps = { children: React.ReactNode; onClickAway: () => void };
+type TOwnProps = {
+  children: React.ReactNode;
+  onClickAway: () => void;
+  shouldListen: boolean;
+};
 
 const ClickAwayListener = (props: TOwnProps) => {
-  const { children, onClickAway } = props;
+  const { children, onClickAway, shouldListen } = props;
+  if (!shouldListen) return;
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

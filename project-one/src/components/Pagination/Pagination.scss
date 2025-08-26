@@ -5,9 +5,12 @@
   justify-content: center;
   color: $garnet;
   font-weight: bold;
+  column-gap: $padding-base;
 
   &__paging {
     display: flex;
+    column-gap: $padding-base;
+    text-align: center;
     margin-bottom: 5px;
   }
 

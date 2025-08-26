@@ -21,7 +21,8 @@
 
   &--disabled {
     font-style: italic;
-    color: $timber-wolf;
+    color: $grullo;
+    font-weight: bold;
     pointer-events: none;
     cursor: default;
   }

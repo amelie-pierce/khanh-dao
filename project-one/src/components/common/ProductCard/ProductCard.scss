@@ -24,7 +24,7 @@
   & img {
     width: 90px;
     height: 70px;
-    object-fit: fill;
+    object-fit: cover;
     align-self: center;
   }
 
@@ -35,8 +35,9 @@
     & img {
       width: 160px;
       height: 130px;
-      object-fit: fill;
-      align-self: center;
+      object-fit: contain;
+      background-color: $cold-ash;
+      align-self: contain;
     }
   }
 }

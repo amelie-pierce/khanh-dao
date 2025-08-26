@@ -1,7 +1,7 @@
 import type { RangeParams } from "@/types";
 import type { DemoForm } from "@/types/demo";
 import { Controller, type Control } from "react-hook-form";
-import { Slider, Text } from "../common";
+import { RangeSlider, Text } from "../common";
 
 type TOwnProps = {
   name: keyof DemoForm;
@@ -17,7 +17,7 @@ const RangeField = (props: TOwnProps) => {
       render={({ field, fieldState }) => {
         return (
           <>
-            <Slider
+            <RangeSlider
               ranges={field.value as RangeParams}
               onUpdateRange={field.onChange}
             />

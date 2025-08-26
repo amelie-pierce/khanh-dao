@@ -2,14 +2,14 @@ import { RANGE_GAP } from "@/constants";
 import type { RangeParams } from "@/types";
 import { currencyConverter } from "@/utils/common";
 import Text from "../Text/Text";
-import "./Slider.scss";
+import "./RangeSlider.scss";
 
 type TOwnProps = {
   ranges: RangeParams;
   onUpdateRange: (arg: RangeParams) => void;
 };
 
-const Slider = (props: TOwnProps) => {
+const RangeSlider = (props: TOwnProps) => {
   const { ranges, onUpdateRange } = props;
 
   const validateMinMax = (
@@ -81,4 +81,5 @@ const Slider = (props: TOwnProps) => {
     </div>
   );
 };
-export default Slider;
+
+export default RangeSlider;

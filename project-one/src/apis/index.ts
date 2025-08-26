@@ -4,7 +4,6 @@ import type { CustomSearchParams, Product } from "@/types";
 // LOGIC HANDLE DATA
 const filterData = (params: CustomSearchParams) => {
   const { min = 0, max = 100, flavor, keyword } = params;
-  console.log("checking keyword", keyword);
   const filteredData = PRODUCTS.filter((product) => {
     const flavors = flavor?.split(",") || [];
     const hasFlavorFilter = Boolean(flavors.filter(Boolean).length);
@@ -22,12 +21,9 @@ const filterData = (params: CustomSearchParams) => {
             .includes(keyword.trim().toLowerCase())
         : true;
 
-    console.log("checking condition", keywordCondition);
-
     return pricingCondition && flavorCondition && keywordCondition;
   });
-  console.log("checking filterdata", filteredData);
-  return filteredData;
+  return filteredData || [];
 };
 
 const generateData = (
@@ -55,7 +51,7 @@ const generateData = (
   }
 
   data = paginatedData[Number(page) - 1];
-  return data;
+  return data || [];
 };
 
 export const fetchProducts = (

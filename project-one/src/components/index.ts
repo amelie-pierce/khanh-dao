@@ -1,6 +1,7 @@
 export { default as AppLayout } from "./AppLayout";
 export { default as Breadscrumb } from "./Breadscrumb/Breadscrumb";
 export { default as CartItem } from "./CartItem/CartItem";
+export { default as ErrorBoundary } from "./Errors/ErrorBoundary";
 export { default as Filter } from "./Filter/Filter";
 export { default as Header } from "./Header/Header";
 export { default as ImageCarousel } from "./ImageCarousel/ImageCarousel";
