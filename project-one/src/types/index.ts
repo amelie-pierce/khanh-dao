@@ -104,3 +104,12 @@ export interface IChip {
   startIcon?: ReactNode;
   onDelete?: () => void;
 }
+
+export interface ISlider {
+  value: number;
+  onChange: (arg: number) => void;
+  width?: string | number;
+  min?: number;
+  max?: number;
+  step?: number;
+}

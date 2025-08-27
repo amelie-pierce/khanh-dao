@@ -7,7 +7,10 @@
   &__section {
     display: flex;
     flex-direction: column;
+    align-self: center;
+    justify-content: center;
     width: 50%;
+
     &__item {
       margin-top: 16px;
       display: flex;
@@ -17,7 +20,20 @@
   }
 
   &__3d {
+    display: flex;
+    flex-direction: column;
     width: 100%;
-    height: 1024px;
+    height: 900px;
+
+    &__toolbar {
+      display: flex;
+      column-gap: 16px;
+      margin-top: 16px;
+    }
+  }
+
+  & .button {
+    margin-top: 16px;
+    align-self: center;
   }
 }

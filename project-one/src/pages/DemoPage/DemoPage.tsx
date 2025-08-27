@@ -1,4 +1,4 @@
-import { Button } from "@/components/common";
+import { Button, Slider, Text } from "@/components/common";
 import use3D from "@/hooks/use3D";
 import { schema } from "@/schemes";
 import type { DemoForm } from "@/types/demo";
@@ -11,25 +11,34 @@ import BabylonScene from "./SceneComponent";
 
 const DemoPage = () => {
   const [data, setData] = useState<DemoForm>();
-  const { addBox } = use3D();
+  const { scene, addBox, addSphere, selectedMesh, rotateMesh } = use3D();
+  const [rotation, setRotation] = useState<number>(0);
 
   const formInstance = useForm<DemoForm>({
     resolver: yupResolver(schema),
     defaultValues: {
       shape: "box",
-      range: {
-        min: 0,
-        max: 10,
-      },
+      size: 0,
     },
   });
-  const { handleSubmit } = formInstance;
+  const {
+    handleSubmit,
+    formState: { errors },
+  } = formInstance;
 
   const onSubmitForm = (formValues: DemoForm) => {
     setData(formValues);
 
     if (formValues.shape === "box") {
-      addBox();
+      addBox(formValues.size / 10);
+    } else {
+      addSphere(formValues.size / 10);
+    }
+  };
+
+  const updateMesh = () => {
+    if (selectedMesh) {
+      rotateMesh(rotation, selectedMesh.id);
     }
   };
 
@@ -38,10 +47,30 @@ const DemoPage = () => {
       <div className="demo__page">
         <div className="demo__page__section">
           <Form />
-          <Button onClick={handleSubmit(onSubmitForm)}>Submit</Button>
+          <Button width={250} onClick={handleSubmit(onSubmitForm)}>
+            <Text size="title" align="center">
+              Insert
+            </Text>
+          </Button>
         </div>
         <div className="demo__page__3d">
           <BabylonScene textSample={data?.name} />
+          <div className="demo__page__3d__toolbar">
+            <Text size="title">Rotation</Text>
+            <Slider
+              value={rotation}
+              min={0}
+              max={360}
+              step={1}
+              onChange={(e) => {
+                setRotation(e);
+                if (selectedMesh) {
+                  rotateMesh(e, selectedMesh.id);
+                }
+              }}
+            />
+            <Button onClick={updateMesh}>CLICK</Button>
+          </div>
         </div>
       </div>
     </FormProvider>

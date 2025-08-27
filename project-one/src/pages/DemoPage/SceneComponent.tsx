@@ -5,9 +5,8 @@ import {
   Engine,
   HemisphericLight,
   MeshBuilder,
+  PointerEventTypes,
   Scene,
-  StandardMaterial,
-  Texture,
   Vector3,
 } from "@babylonjs/core";
 import * as earcut from "earcut";
@@ -21,7 +20,7 @@ const BabylonScene: React.FC<BabylonSceneProps> = (props) => {
   const { textSample = "" } = props;
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [font, setFontData] = useState();
-  const { scene: currentScene, initScene } = use3D();
+  const { scene: currentScene, initScene, selectMesh } = use3D();
 
   const getFonts = async () => {
     const fontData = await (
@@ -60,27 +59,6 @@ const BabylonScene: React.FC<BabylonSceneProps> = (props) => {
 
     light.intensity = 1;
 
-    // Create a sphere
-    const sphere = MeshBuilder.CreateSphere(
-      "sphere1",
-      { diameter: 2, segments: 64 },
-      scene
-    );
-
-    const sphereMaterial = new StandardMaterial("sphere");
-    sphereMaterial.diffuseTexture = new Texture("/images/fire.png");
-    sphere.material = sphereMaterial;
-
-    sphere.position.y = 1;
-
-    const box = MeshBuilder.CreateBox("box", {});
-    const boxMaterial = new StandardMaterial("box");
-    boxMaterial.diffuseTexture = new Texture("/images/water.png");
-    box.material = boxMaterial;
-
-    box.position.x = 2;
-    box.position.y = 1;
-
     // Create a ground
     MeshBuilder.CreateGround("ground1", { width: 6, height: 10 }, scene);
 
@@ -93,6 +71,21 @@ const BabylonScene: React.FC<BabylonSceneProps> = (props) => {
     };
 
     initScene(scene);
+
+    scene.onPointerObservable.add((pointerInfo) => {
+      switch (pointerInfo.type) {
+        case PointerEventTypes.POINTERDOWN:
+          if (pointerInfo.pickInfo?.hit) {
+            // Check if a mesh was picked
+            const pickedMesh = pointerInfo.pickInfo.pickedMesh;
+            pickedMesh && selectMesh(pickedMesh);
+            console.log("Clicked on:", pickedMesh?.name);
+            // Your custom logic for the clicked mesh
+          }
+          break;
+        // You can also handle POINTERUP, POINTERMOVE, etc.
+      }
+    });
 
     window.addEventListener("resize", resize);
 
@@ -110,9 +103,8 @@ const BabylonScene: React.FC<BabylonSceneProps> = (props) => {
         textSample,
         font,
         {
-          size: 8,
-          resolution: 32,
-          depth: 5,
+          size: 1,
+          resolution: 16,
         },
         currentScene,
         earcut.default
@@ -123,7 +115,9 @@ const BabylonScene: React.FC<BabylonSceneProps> = (props) => {
     }
   }, [font, currentScene, textSample]);
 
-  return <canvas ref={canvasRef} style={{ width: "100%", height: "100%" }} />;
+  return (
+    <canvas ref={canvasRef} style={{ width: "100%", height: "100%" }}></canvas>
+  );
 };
 
 export default BabylonScene;

@@ -1,4 +1,4 @@
-import type { Scene } from "@babylonjs/core";
+import type { AbstractMesh, Scene } from "@babylonjs/core";
 
 export type TShape = "box" | "sphere";
 
@@ -10,6 +10,10 @@ export interface DemoForm {
 
 export interface Custom3DHook {
   scene?: Scene;
+  selectedMesh?: AbstractMesh;
   initScene: (arg: Scene) => void;
-  addBox: () => void;
+  addBox: (size: number) => void;
+  addSphere: (size: number) => void;
+  selectMesh: (obj: AbstractMesh) => void;
+  rotateMesh: (deg: number, meshId: string) => void;
 }
