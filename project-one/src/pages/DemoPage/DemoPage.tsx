@@ -22,10 +22,7 @@ const DemoPage = () => {
       size: 0,
     },
   });
-  const {
-    handleSubmit,
-    formState: { errors },
-  } = formInstance;
+  const { handleSubmit } = formInstance;
 
   const onSubmitForm = (formValues: DemoForm) => {
     setData(formValues);
