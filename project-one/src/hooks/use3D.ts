@@ -66,6 +66,7 @@ const use3D = create<Custom3DHook>((set, get) => ({
     if (newScene) {
       const newMeshes = newScene.meshes.map((mesh) => {
         if (mesh.id === meshId) {
+          console.log("checking deg", deg);
           mesh.rotate(Axis.Y, Tools.ToRadians(deg), Space.LOCAL);
         }
         return mesh;
