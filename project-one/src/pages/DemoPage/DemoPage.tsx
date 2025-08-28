@@ -1,17 +1,18 @@
 import { Button, Slider, Text } from "@/components/common";
 import use3D from "@/hooks/use3D";
 import { schema } from "@/schemes";
-import type { DemoForm } from "@/types/demo";
+import type { DemoForm, TNavigator } from "@/types/demo";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
+import Controller from "./Controller";
 import "./DemoPage.scss";
 import Form from "./Form";
 import BabylonScene from "./SceneComponent";
 
 const DemoPage = () => {
   const [data, setData] = useState<DemoForm>();
-  const { scene, addBox, addSphere, selectedMesh, rotateMesh } = use3D();
+  const { addBox, addSphere, selectedMesh, rotateMesh, onNavigate } = use3D();
   const [rotation, setRotation] = useState<number>(0);
 
   const formInstance = useForm<DemoForm>({
@@ -36,9 +37,9 @@ const DemoPage = () => {
     }
   };
 
-  const updateMesh = () => {
+  const handleNavigator = (arg: TNavigator) => {
     if (selectedMesh) {
-      rotateMesh(rotation, selectedMesh.id);
+      onNavigate(arg, selectedMesh?.id);
     }
   };
 
@@ -69,7 +70,7 @@ const DemoPage = () => {
                 }
               }}
             />
-            <Button onClick={updateMesh}>CLICK</Button>
+            <Controller handler={handleNavigator} />
           </div>
         </div>
       </div>

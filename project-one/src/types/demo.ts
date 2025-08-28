@@ -16,4 +16,7 @@ export interface Custom3DHook {
   addSphere: (size: number) => void;
   selectMesh: (obj: AbstractMesh) => void;
   rotateMesh: (deg: number, meshId: string) => void;
+  onNavigate: (direction: TNavigator, meshId: string) => void;
 }
+
+export type TNavigator = "left" | "right" | "up" | "down";

@@ -40,16 +40,18 @@ const BabylonScene: React.FC<BabylonSceneProps> = (props) => {
 
     // Create a camera
     const camera = new ArcRotateCamera(
-      "Camera",
+      "camera",
       0,
-      0,
+      Math.PI / 2,
       10,
       new Vector3(0, 0, 0),
       scene
     );
 
-    // Positions the camera overwriting alpha, beta, radius
-    camera.setPosition(new Vector3(0, 0, 20));
+    // Set the alpha, beta, and radius
+    camera.alpha = -Math.PI / 2;
+    camera.beta = Math.PI / 2;
+    camera.radius = 20; // Distance from the target
 
     // This attaches the camera to the canvas
     camera.attachControl(scene, true);
@@ -69,7 +71,6 @@ const BabylonScene: React.FC<BabylonSceneProps> = (props) => {
     const resize = () => {
       engine.resize();
     };
-
     initScene(scene);
 
     scene.onPointerObservable.add((pointerInfo) => {
@@ -79,7 +80,7 @@ const BabylonScene: React.FC<BabylonSceneProps> = (props) => {
             // Check if a mesh was picked
             const pickedMesh = pointerInfo.pickInfo.pickedMesh;
             pickedMesh && selectMesh(pickedMesh);
-            console.log("Clicked on:", pickedMesh?.name);
+            console.log(" DEBUGGING MESH - Clicked on:", pickedMesh?.name);
             // Your custom logic for the clicked mesh
           }
           break;

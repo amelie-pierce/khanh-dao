@@ -1,4 +1,4 @@
-import type { Custom3DHook } from "@/types/demo";
+import type { Custom3DHook, TNavigator } from "@/types/demo";
 import {
   Axis,
   MeshBuilder,
@@ -65,9 +65,37 @@ const use3D = create<Custom3DHook>((set, get) => ({
 
     if (newScene) {
       const newMeshes = newScene.meshes.map((mesh) => {
-        console.log("checking radians", Tools.ToRadians(deg));
         if (mesh.id === meshId) {
           mesh.rotate(Axis.Y, Tools.ToRadians(deg), Space.LOCAL);
+        }
+        return mesh;
+      });
+
+      newScene.meshes = newMeshes;
+    }
+
+    set({ scene: newScene });
+  },
+  onNavigate: (direction: TNavigator, meshId: string) => {
+    const newScene = get().scene;
+    const SPACING = 0.5;
+
+    if (newScene) {
+      const newMeshes = newScene.meshes.map((mesh) => {
+        if (mesh.id === meshId) {
+          switch (direction) {
+            case "left":
+              mesh.position.x = mesh.position.x - SPACING;
+              break;
+            case "right":
+              mesh.position.x = mesh.position.x + SPACING;
+              break;
+            case "up":
+              mesh.position.y = mesh.position.y + SPACING;
+              break;
+            default:
+              mesh.position.y = mesh.position.y - SPACING;
+          }
         }
         return mesh;
       });
